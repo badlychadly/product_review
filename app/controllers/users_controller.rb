@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  before_action :current_user
+  before_action :require_logged_in, except: [:new, :create]
+
   def new
-    @user = User.new
+    
   end
 
   def create 
@@ -15,6 +18,18 @@ class UsersController < ApplicationController
 
   def show
     
+  end
+
+  def edit
+    
+  end
+
+  def update
+    if @user.update_attributes(user_params)
+      redirect_to user_path(current_user)
+    else 
+    render :edit
+    end
   end
 
   private 
