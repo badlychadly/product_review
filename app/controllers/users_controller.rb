@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to user_path(@user)
     else 
-      # binding.pry
       render 'new'
     end
   end
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(params[:id])
-    binding.pry
   end
 
   def update

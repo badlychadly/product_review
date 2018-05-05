@@ -3,4 +3,6 @@
 
 <%= render "shared_errors" %>
 
-<%= render partial: "signup", locals: {user: @user} %>
+<%= form_for @user do |f| %>
+  <%= render partial: "signup", locals: {f: f} %>
+<% end %>

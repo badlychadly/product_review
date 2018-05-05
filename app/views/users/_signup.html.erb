@@ -1,5 +1,5 @@
 
-  <%= form_for(@user, url: request.path) do |f| %>
+  
 
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -10,4 +10,3 @@
   <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation %>
   <%= f.submit "Sign up" %>
-<% end %>
