@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    return redirect_to(controller: 'static', action: 'welcome') unless logged_in?
+   redirect_to(controller: 'static', action: 'welcome') unless logged_in?
   end
 
 end

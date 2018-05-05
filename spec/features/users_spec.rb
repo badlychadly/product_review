@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Users", type: :feature do
   describe "new user signup" do
     it "creates a new user" do 
-      visit new_user_path 
+      visit signup_path 
       fill_in "user[username]", with: "Mark"
       fill_in "user[email]", with: "mark@gmail.com"
       fill_in "user[password]", with: "markmark"

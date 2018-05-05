@@ -8,6 +8,6 @@ class User < ApplicationRecord
 
   private
   def normalize_name
-    self.username = self.username.downcase.titleize
+    self.username = self.username.downcase.titleize if !!username
   end
 end

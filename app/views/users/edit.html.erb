@@ -1,6 +1,6 @@
 
 <h2>Edit <%= current_user.username %>s' info</h2>
 
-<%= render "sessions/shared_errors" %>
+<%= render "shared_errors" %>
 
-<%= render "signup" %>
+<%= render partial: "signup", locals: {user: @user} %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user
+  before_action :current_user, except: [:edit]
   before_action :require_logged_in, except: [:new, :create]
 
   def new
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to user_path(@user)
     else 
+      # binding.pry
       render 'new'
     end
   end
@@ -21,12 +22,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+    @user = User.find_by(params[:id])
+    binding.pry
   end
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to user_path(current_user)
+      redirect_to user_path(@user)
     else 
     render :edit
     end

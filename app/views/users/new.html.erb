@@ -1,5 +1,8 @@
 
 <h1>Signup</h1>
 
+<%= render "shared_errors" %>
 
-<%= render "signup" %>
+
+
+<%= render partial: "signup", locals: {user: @user} %>
