@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :current_user, except: [:edit]
+  before_action :current_user
   before_action :require_logged_in, except: [:new, :create]
 
   def new
-    
+    @user = User.new
   end
 
   def create 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(params[:id])
+    
   end
 
   def update

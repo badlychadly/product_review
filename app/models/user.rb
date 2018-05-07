@@ -3,7 +3,7 @@ class User < ApplicationRecord
   before_validation :normalize_name
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true 
-  validates :password, presence: true
+  
 
 
   private
