@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show]
+  before_action :find_product, only: [:show, :new]
 
   def index
     @products = Product.all
@@ -10,7 +10,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-        
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render :new
+    end
   end
 
   def show
@@ -20,7 +25,15 @@ class ProductsController < ApplicationController
 
   private 
 
+  def product_params
+    params.require(:product).permit(:name, :description, :link, :img, :price)
+  end
+
   def find_product
-    @product = Product.find_by(id: params[:id])
+    if params[:id].present?
+      @product = Product.find_by(id: params[:id])
+    else
+      @product = Product.new
+    end
   end
 end

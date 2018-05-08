@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create]
 
 
-  resources :users, except: [:new, :create] do 
-    resources :products, only: [:new, :create]
-  end 
+  resources :users, except: [:new, :create]
    
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
