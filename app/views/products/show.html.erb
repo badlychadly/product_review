@@ -12,11 +12,13 @@
     <h3>Reviews</h3>
 <% @product.reviews.each do |review| %>
   <div>
-    <%= review.content %>
+    
+    <%= review.content %> 
+    <%= link_to "Edit Review", edit_product_review_path(@product, review) %>
   </div>
 <% end %>
 
-<%= form_for [@product, @review] do |f| %>
+<%= form_for [@product, @product.reviews.build] do |f| %>
   <%= f.text_area :content %>
   <%= f.submit "Add Review" %>
 <% end %>

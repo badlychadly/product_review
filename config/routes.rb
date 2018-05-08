@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static#welcome'
   
   resources :products do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :edit, :update]
   end 
   
   
