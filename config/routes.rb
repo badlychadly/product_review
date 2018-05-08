@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
   root 'static#welcome'
   
-  resources :products do 
-    resources :reviews
-  end 
+  resources :products
   
   resources :reviews, only: [:new, :create]
 
 
-  resources :users, except: [:new, :create]
+  resources :users, except: [:new, :create] do 
+    resources :products, only: [:new, :create]
+  end 
    
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
