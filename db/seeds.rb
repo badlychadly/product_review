@@ -8,3 +8,5 @@ product = Product.create(
   img: "https://images-na.ssl-images-amazon.com/images/I/71NHaJp1zsL._SL1500_.jpg",
   price: 34.99
   )
+
+  review = user.reviews.build(content: "This is great", product: product)

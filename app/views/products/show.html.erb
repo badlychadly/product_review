@@ -1,0 +1,8 @@
+<h2> <%= @product.name %></h2>
+
+<li><%= @product.price %></li>
+<li><%= @product.description %></li>
+<li><%= link_to @product.link, "#{@product.link}" %></li>
+
+<img src="<%= @product.img %>" alt="" width="300" height="300">
+
