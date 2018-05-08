@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :new]
+  before_action :require_logged_in
 
   def index
     @products = Product.all
@@ -19,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @review = @product.reviews.build
   end
 
 

@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root 'static#welcome'
   
-  resources :products
+  resources :products do
+    resources :reviews, only: [:create]
+  end 
   
-  resources :reviews, only: [:new, :create]
+  
 
 
   resources :users, except: [:new, :create]

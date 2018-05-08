@@ -8,11 +8,15 @@
 
 
 
-                                                                <!-- add review -->
 
     <h3>Reviews</h3>
 <% @product.reviews.each do |review| %>
   <div>
     <%= review.content %>
   </div>
+<% end %>
+
+<%= form_for [@product, @review] do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit "Add Review" %>
 <% end %>
