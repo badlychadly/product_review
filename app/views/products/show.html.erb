@@ -2,7 +2,17 @@
 
 <li><%= @product.price %></li>
 <li><%= @product.description %></li>
-<li><%= link_to @product.link, "#{@product.link}" %></li>
+<li><%= link_to "see on Amazon", @product.link %></li>
 
 <img src="<%= @product.img %>" alt="" width="300" height="300">
 
+
+
+                                                                <!-- add review -->
+
+    <h3>Reviews</h3>
+<% @product.reviews.each do |review| %>
+  <div>
+    <%= review.content %>
+  </div>
+<% end %>

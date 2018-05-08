@@ -10,3 +10,4 @@ product = Product.create(
   )
 
   review = user.reviews.build(content: "This is great", product: product)
+  review.save
