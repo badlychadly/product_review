@@ -1,5 +1,7 @@
 {
   "name": "product_review",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.1.1"
+  }
 }
