@@ -9,7 +9,7 @@
       <strong><%= product.name %></strong>
       <h4></h4>
       <img src="<%= product.img %>" class="figure-img img-fluid rounded max-width: 100%" alt="A generic square placeholder image with rounded corners in a figure.">
-      <figcaption class="figure-caption"> <%= product.reviews_content %></figcaption>
+      <%= render collection: product.reviews, partial: "reviews/figcaption", as: :review %>
     </figure>
   <% end %>
 
