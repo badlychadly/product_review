@@ -3,7 +3,7 @@
       My Account
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
+      <%= link_to "my reviews", user_path(current_user), class: "dropdown-item" %>
       <a class="dropdown-item" href="#">Another action</a>
       <%= link_to "Logout", logout_path, class: "dropdown-item", method: "delete" %>
     </div>

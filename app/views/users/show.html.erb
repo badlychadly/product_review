@@ -1,4 +1,4 @@
-<h2> <%= current_user.username %>s' page</h2> 
+<h1> <%= current_user.username %>s' page</h1> 
 
 
 <!-- has products the user has reviewed -->
@@ -6,8 +6,10 @@
   <% current_user.products.each do |product| %>
   
     <figure class="figure">
+      <strong><%= product.name %></strong>
+      <h4></h4>
       <img src="<%= product.img %>" class="figure-img img-fluid rounded max-width: 100%" alt="A generic square placeholder image with rounded corners in a figure.">
-      <figcaption class="figure-caption">A caption for the above image.</figcaption>
+      <figcaption class="figure-caption"> <%= product.reviews_content %></figcaption>
     </figure>
   <% end %>
 
