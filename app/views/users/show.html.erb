@@ -6,19 +6,10 @@
         <div class="row">
           <% current_user.products.each do |product| %>
             <div class="container col-sm-3">
-                <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
-                <p class="font-weight-bold w-70"><%=product.name %></p>
-                <%= render partial: "products/modal_description", locals: {product: product} %>
-
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                    Reviews
-                  </button>
-                  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-
-                  </div>
-
-
-                <%= render collection: product.reviews, partial: "reviews/modal_reviews", as: :review %>
+            <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
+            <p class="font-weight-bold w-70"><%=product.name %></p>
+            <%= render partial: "products/modal_description", locals: {product: product} %>
+            <%= render partial: "reviews/modal_reviews", locals: {product: product} %>
             </div>
           <% end %>
 
