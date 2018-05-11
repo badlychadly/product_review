@@ -2,30 +2,28 @@
   <h1> <%= current_user.username %>s' page</h1> 
   
   
-  <div class="card-columns d-flex p-2">
-  <% current_user.products.each do |product| %>
   
-  
-    <div class="card col-sm-3 container">
-      <img class="card-img-top" src="<%= product.img %>" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= product.name %></h5>
-        <%= render partial: "products/collapse_description", locals: {product: product} %>
-      </div>
-    </div>
-    
-  
-        <% end %>
-    </div>
+        <div class="row">
+          <% current_user.products.each do |product| %>
+            <div class="container col-sm-3">
+                <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
+                <p class="font-weight-bold w-70"><%=product.name %></p>
+                <%= render partial: "products/modal_description", locals: {product: product} %>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                    Reviews
+                  </button>
+                  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+
+                  </div>
 
 
-        <% current_user.products.each do |product| %>
-        
-        
-          
-          
-        
-              <% end %>
+                <%= render collection: product.reviews, partial: "reviews/modal_reviews", as: :review %>
+            </div>
+          <% end %>
+
+        </div>
+
 
 
 

@@ -8,3 +8,8 @@
       <%= render partial: "products/collapse_description", locals: {product: product} %>
     </figure>
   </div>
+
+
+  <%= modal_for_reviews(review) do %>
+    <%= review.content %>
+  <% end %>

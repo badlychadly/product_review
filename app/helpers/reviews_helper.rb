@@ -5,12 +5,15 @@ module ReviewsHelper
   end
 
   def figcaption_for_reviews(review)
-      content_tag :figcaption, review , class: "figure-caption" do
-        yield
-      end
-    # product.reviews_content.each do |content|
-    #   content_tag(:figcaption, content, class: "figure-caption")
-    # end
+    content_tag :figcaption, review , class: "figure-caption" do
+      yield
+    end
+  end
+
+  def li_for_modal(review)
+    content_tag :li, review, class: "list-group-item" do
+      yield
+    end
   end
 
 end
