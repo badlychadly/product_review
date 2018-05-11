@@ -1,24 +1,34 @@
-<h2> <%= @product.name %></h2>
 
-<li><%= @product.price %></li>
-<li><%= @product.description %></li>
-<li><%= link_to "see on Amazon", @product.link %></li>
+<div class="container">
+  <h2> <%= @product.name %></h2>
+  <div class="row">
 
-<img src="<%= @product.img %>" alt="" width="300" height="300">
-
-
-
-
-    <h3>Reviews</h3>
-<% @product.reviews.each do |review| %>
-  <div>
+    <div class="col-6 col-sm-4 offset-md-2 mb-5">
+      <img src="<%= @product.img %>" alt="" width="300" height="300">
+    </div>
     
-    <%= review.content %> 
-    <%= review_edit_link(review) %>
+    <div class="col-12 col-sm-6 align-self-center">
+      <li><%= @product.price %></li>
+      <li><%= @product.description %></li>
+      <li><%= link_to "see on Amazon", @product.link %></li>
+  
+    </div>
   </div>
-<% end %>
+  
+  
+  
+  
+    <div class="col-sm-6">
+      <h3 class="text-center mb-5">Reviews</h3>
+      <%= render collection: @product.reviews, partial: "card_reviews", as: :review %>
+      <%= form_for [@product, @product.reviews.build] do |f| %>
+        <%= f.text_area :content, class: "form-control-lg col p-3 mt-4" %>
+        <%= f.submit "Add Review" %>
+      <% end %>
+    </div> 
+    
 
-<%= form_for [@product, @product.reviews.build] do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit "Add Review" %>
-<% end %>
+  
+  
+
+</div>

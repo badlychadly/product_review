@@ -6,14 +6,13 @@
         <div class="row">
           <% current_user.products.each do |product| %>
             <div class="container col-sm-3 bg-light">
+              <%= image_link(product) do %>
             <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
+            <% end %>
             <p class="font-weight-bold w-70"><%=product.name %></p>
             <%= render partial: "modal_description", locals: {product: product} %>
             <%= render partial: "modal_reviews", locals: {product: product} %>
-            <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
-            <p class="font-weight-bold w-70"><%=product.name %></p>
-            <%= render partial: "modal_description", locals: {product: product} %>
-            <%= render partial: "modal_reviews", locals: {product: product} %>
+            
             </div>
           <% end %>
 
