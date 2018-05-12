@@ -20,4 +20,12 @@ module ApplicationHelper
     render  "layouts/nav/dropdown"
   end 
 
+  def self.shared_errors(obj)
+     if obj.errors.any?
+       obj.errors.each do |attribute, message|
+        "#{attribute} #{message}"
+       end
+     end
+  end
+
 end
