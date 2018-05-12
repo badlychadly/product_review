@@ -22,7 +22,9 @@
       <h3 class="text-center mb-5">Reviews</h3>
       <%= render collection: @product.reviews, partial: "card_reviews", as: :review %>
         <% if flash[:alert] %>
-          <%= flash[:alert] %>
+          <% flash[:alert].each do |alert| %>
+          <%= alert %>
+          <% end %>
         <% end %>
       <%= form_for [@product, @product.reviews.build] do |f| %>
         <%= f.text_area :content, class: "form-control-lg col p-3 mt-4" %>

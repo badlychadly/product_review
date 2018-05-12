@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in
   before_action :find_product_review, except: [:create]
-  helper_method :shared_errors
+  helper_method :review_errors
 
 
   def create
@@ -11,8 +11,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to product_path(@product) 
     else
-      
-      redirect_to product_path(@product), alert: ApplicationHelper.shared_errors(@review)
+      # binding.pry 
+      redirect_to product_path(@product), alert: @review.errors.full_messages
     end
   end
 
