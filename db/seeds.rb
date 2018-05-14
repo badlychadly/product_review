@@ -49,8 +49,8 @@ p1 = Product.create(
   rev9 = Review.create(content: "I can't see why you wouldn't buy this", user: u1, product: p3)
   rev10 = Review.create(content: "Everyone needs one of these!", user: u3, product: p4)
   rev11 = Review.create(content: "You need this product", user: u3, product: p5)
-  rev12 = p1.reviews.build(content: "Love", user: u1)
-  rev12 = p1.reviews.build(content: "Love", user: u5)
-  rev12 = p1.reviews.build(content: "Love", user: u4)
-  p1.save
+  rev12 = p2.reviews.build(content: "Love", user: u3)
+  rev13 = p2.reviews.build(content: "Love", user: u5)
+  rev14 = p2.reviews.build(content: "Love", user: u4)
+  p2.save
   

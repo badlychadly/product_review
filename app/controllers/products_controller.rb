@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @products = Product.all
+    if params["filter by"].present?
+      @products = Product.most_reviews
+    else 
+      @products = Product.all
+    end 
   end
 
   def new
