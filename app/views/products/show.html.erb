@@ -8,10 +8,11 @@
     </div>
     
     <div class="col-12 col-sm-6 align-self-center">
-      <li><%= @product.price %></li>
-      <li><%= @product.description %></li>
-      <li><%= link_to "see on Amazon", @product.link %></li>
-  
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= @product.description %></li>
+        <li class="list-group-item"><%= link_to "see on Amazon", @product.link %></li>
+        <li class="list-group-item text-danger">$<%= @product.price %></li>
+      </ul>
     </div>
   </div>
   
