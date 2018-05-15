@@ -5,10 +5,14 @@
 <%= div_card_for_review(review) do %>
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted justify-content-between d-flex">reviewed by:
-
-      <span class="badge badge-primary">Primary</span>
+      <%= render partial: "upvote_button", locals: {review: review} %>
     </h6>
-    <h5 class="card-title"><%= review.users_name %></h5>
+    <h5 class="card-title justify-content-between d-flex"><%= review.users_name %>
+      <button type="button" class="btn btn-sm btn-primary">
+          Down Vote <span class="badge badge-light"><%= review.get_downvotes.size %></span>
+          <span class="sr-only">unread messages</span>
+        </button>
+    </h5>
     <p class="card-text"><%= review.content %></p>
     <%= link_to "Product Page", product_path(review.product), class: "card-link" %>
     <%= review_edit_link(review) %>
