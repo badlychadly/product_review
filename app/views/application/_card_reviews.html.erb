@@ -4,7 +4,10 @@
 
 <%= div_card_for_review(review) do %>
   <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">reviewed by:</h6>
+    <h6 class="card-subtitle mb-2 text-muted justify-content-between d-flex">reviewed by:
+
+      <span class="badge badge-primary">Primary</span>
+    </h6>
     <h5 class="card-title"><%= review.users_name %></h5>
     <p class="card-text"><%= review.content %></p>
     <%= link_to "Product Page", product_path(review.product), class: "card-link" %>
