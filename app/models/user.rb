@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :reviews
   has_many :products, through: :reviews
+  acts_as_voter
 
   has_secure_password
   before_validation :normalize_name
