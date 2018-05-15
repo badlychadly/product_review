@@ -16,7 +16,8 @@
     </div>
   </div>
   
-  
+  <%= @product.weighted_total %>
+  <%= link_to "Like", like_product_path(@product), method: :put %>  
   
   
     <div class="col-sm-6">

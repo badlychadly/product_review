@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :new]
+  before_action :find_product, only: [:show, :new, :upvote, :downvote]
   before_action :require_logged_in
 
   def index
@@ -24,6 +24,16 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # raise params.inspect
+  end
+
+  def upvote
+    binding.pry
+    @product.upvote_by current_user
+    redirect_back(fallback_location: product_path(@product))
+  end
+
+  def downvote
     
   end
 

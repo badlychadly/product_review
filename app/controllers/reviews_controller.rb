@@ -9,10 +9,10 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.build(review_params)
     @review.user = current_user
     if @review.save
-      redirect_to product_path(@product) 
+      redirect_back(fallback_location: product_path(@product)) 
     else
-      # binding.pry 
-      redirect_to product_path(@product), alert: @review.errors.full_messages
+      flash[:alert] = @review.errors.full_messages
+      redirect_back(fallback_location: product_path(@product))
     end
   end
 

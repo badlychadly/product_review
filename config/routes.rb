@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   
   resources :products do
     resources :reviews, only: [:create, :edit, :update]
+    member do
+      put "like", to: "products#upvote"
+      put "dislike", to: "products#downvote"
+    end
   end 
+
   
   
   
