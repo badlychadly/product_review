@@ -7,13 +7,15 @@ module ProductsHelper
 
   def products_filter(params)
     if params["filter by"].present?
-      if params["filter by"].include?("Most Reviews")
-        Product.most_reviews
-      else
-        Product.best_votes
-      end
+      method_name = to_camel_case(params["filter by"])
+      Product.send method_name
     else 
       Product.all
     end
   end
+
+  def to_camel_case(string)
+    string.downcase.sub(" ", "_")
+  end
+
 end

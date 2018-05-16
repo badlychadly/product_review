@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Products</h2>
   <%= form_tag products_path, method: :get, action: :index, class: 'form-row mb-5' do %>
-    <%= select_tag "filter by", raw("<option>Most Reviews</option><option>Best Voted</option>"), class: 'form-control w-50' %>
+    <%= select_tag "filter by", raw("<option>Most Reviews</option><option>Best Voted</option><option>Most Recent</option>"), class: 'form-control w-50' %>
     <%= submit_tag "filter", class: 'btn btn-success' %>
   <% end %>
   

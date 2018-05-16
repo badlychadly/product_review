@@ -12,7 +12,11 @@ class Product < ApplicationRecord
     Product.joins(:reviews).group(:name).order("COUNT(product_id)DESC")
   end
 
-  def self.best_votes
+  def self.best_voted
     order(cached_votes_up: :desc)
+  end
+
+  def self.most_recent
+    order(:created_at)
   end
 end
