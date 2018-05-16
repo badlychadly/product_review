@@ -22,9 +22,10 @@
     <div class="col-sm-6">
       <h3 class="text-center mb-5">Reviews</h3>
       <%= render collection: @product.reviews, partial: "card_reviews", as: :review %>
+      <%= render partial: "shared_errors", locals: {obj: @review} if !!@review %>
        
       <%= form_for [@product, @product.reviews.build] do |f| %>
-      <%= review_errors(flash[:alert])%>
+      
         <%= f.text_area :content, class: "form-control-lg col p-3 mt-4" %>
         <%= f.submit "Add Review", class: "mb-5 btn btn-outline-info" %>
       <% end %>

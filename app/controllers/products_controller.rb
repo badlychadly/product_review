@@ -31,10 +31,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-    
-  end
-
   def upvote
     @product.upvote_by current_user
     redirect_back(fallback_location: product_path(@product))

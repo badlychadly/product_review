@@ -2,7 +2,8 @@ class Product < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
   acts_as_votable
-  validates :name, :description, :link, :price, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :description, :link, :price, presence: true
 
 
   def reviews_content

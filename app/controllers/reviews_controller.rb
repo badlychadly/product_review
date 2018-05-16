@@ -3,6 +3,10 @@ class ReviewsController < ApplicationController
   before_action :find_product_review, except: [:create]
   helper_method :review_errors
 
+  def index
+    
+  end
+
 
   def create
     @product = Product.find_by(id: params[:product_id])
@@ -11,8 +15,9 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_back(fallback_location: product_path(@product)) 
     else
-      flash[:alert] = @review.errors.full_messages
-      redirect_back(fallback_location: product_path(@product))
+      # flash[:alert] = @review.errors.full_messages
+      # redirect_back(fallback_location: product_path(@product))
+      render :index
     end
   end
 

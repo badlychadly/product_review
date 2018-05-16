@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'static#welcome'
   
-  resources :products do
-    resources :reviews, only: [:create, :edit, :update]
+  resources :products, except: [:show] do
+    resources :reviews, only: [:create, :edit, :update, :index]
     member do
       put "like", to: "products#upvote"
       put "dislike", to: "products#downvote"
