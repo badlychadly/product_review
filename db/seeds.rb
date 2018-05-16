@@ -53,4 +53,21 @@ p1 = Product.create(
   rev13 = p2.reviews.build(content: "Love", user: u5)
   rev14 = p2.reviews.build(content: "Love", user: u4)
   p2.save
+
+  User.all.each do |user| 
+    p2.upvote_by user
+    p5.downvote_from user
+  end
+
+  User.first_three.each do |user|
+    p1.upvote_by user
+    p3.upvote_by user 
+    p4.upvote_by user
+  end
+
+  User.last_three.each do |user|
+    p1.downvote_from user
+    p4.downvote_from user
+    p3.downvote_from user unless user == User.last_three.last
+  end
   
