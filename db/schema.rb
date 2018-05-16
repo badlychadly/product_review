@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_030211) do
+ActiveRecord::Schema.define(version: 2018_05_16_030000) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2018_05_15_030211) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
   end
 
   create_table "reviews", force: :cascade do |t|
