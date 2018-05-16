@@ -1,5 +1,5 @@
-<% if @user.errors.any? %>
-  <% @user.errors.each do |attribute, message| %>
+<% if obj.errors.any? %>
+  <% obj.errors.each do |attribute, message| %>
     <%= "#{attribute} #{message}" %> <br>
   <% end %>
 <% end %>
