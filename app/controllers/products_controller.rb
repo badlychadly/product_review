@@ -3,11 +3,8 @@ class ProductsController < ApplicationController
   before_action :require_logged_in
 
   def index
-    if params["filter by"].present?
-      @products = Product.most_reviews
-    else 
-      @products = Product.all
-    end 
+    
+    @products = helpers.products_filter(params)
   end
 
   def new
