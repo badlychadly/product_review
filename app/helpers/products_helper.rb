@@ -15,7 +15,7 @@ module ProductsHelper
   end
 
   def to_camel_case(string)
-    string.downcase.sub(" ", "_")
+    string.parameterize.underscore.to_sym
   end
 
 end
