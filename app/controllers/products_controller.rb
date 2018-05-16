@@ -24,17 +24,17 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # raise params.inspect
+    
   end
 
   def upvote
-    binding.pry
     @product.upvote_by current_user
     redirect_back(fallback_location: product_path(@product))
   end
 
   def downvote
-    
+    @product.downvote_from current_user
+    redirect_back(fallback_location: product_path(@product))    
   end
 
 

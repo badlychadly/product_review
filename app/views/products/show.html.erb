@@ -1,9 +1,22 @@
 
-<div class="container">
+<div class="container-fluid">
   <h2> <%= @product.name %></h2>
-  <div class="row">
+  <div class="row mx-auto">
 
-    <div class="col-6 col-sm-4 offset-md-2 mb-5">
+
+    <div class="btn-group-vertical mx-auto">
+      <%= link_to like_product_path(@product), method: :put, class: "btn btn-success mb-1" do %> 
+      Upvote
+      <span class="badge badge-light"><%= @product.get_upvotes.size %></span>
+      <span class="sr-only">Upvotes</span>
+      <% end %>
+      <%= link_to dislike_product_path(@product), method: :put, class: "btn btn-success" do %> 
+      Downvote
+      <span class="badge badge-light"><%= @product.get_downvotes.size %></span>
+      <span class="sr-only">Downvotes</span>
+      <% end %>
+    </div>
+    <div class="col-6 col-sm-4 mb-5 ml-2">
       <img src="<%= @product.img %>" alt="" width="300" height="300">
     </div>
     
@@ -16,8 +29,6 @@
     </div>
   </div>
   
-  <%= @product.weighted_total %>
-  <%= link_to "Like", like_product_path(@product), method: :put %>  
   
   
     <div class="col-sm-6">
