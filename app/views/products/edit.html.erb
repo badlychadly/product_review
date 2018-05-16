@@ -1,10 +1,9 @@
 
 <div class="container">
-  <h2>New Product</h2>
+  <h2>Edit <%= @product.name %></h2>
+  
   <%= form_for @product do |f| %>
     <%= render partial: "products/form", locals: {f: f} %>
-    
-    <%= f.submit "Add Product" %>
+    <%= f.submit "Edit Product" %>
   <% end %>
 </div>
-

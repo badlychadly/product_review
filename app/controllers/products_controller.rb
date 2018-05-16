@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :new, :upvote, :downvote]
+  before_action :find_product, except: [:index]
   before_action :require_logged_in
 
   def index
@@ -16,6 +16,18 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     else
       render :new
+    end
+  end
+
+  def edit
+    
+  end
+
+  def update
+    if @product.update_attributes(product_params)
+      redirect_to product_path(@product)
+    else
+      render :edit
     end
   end
 
