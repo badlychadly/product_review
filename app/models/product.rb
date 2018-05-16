@@ -11,4 +11,8 @@ class Product < ApplicationRecord
   def self.most_reviews 
     Product.joins(:reviews).group(:name).order("COUNT(product_id)DESC")
   end
+
+  def self.most_votes
+    
+  end
 end
