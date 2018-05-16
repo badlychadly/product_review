@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <% obj.errors.each do |attribute, message| %>
-    <%= "#{attribute} #{message}" %> <br>
+    <%= "#{attribute unless attribute == :user_id} #{message}" %> <br>
   <% end %>
 <% end %>
 <br><br>

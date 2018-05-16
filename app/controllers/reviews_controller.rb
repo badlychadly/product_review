@@ -15,8 +15,6 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_back(fallback_location: product_path(@product)) 
     else
-      # flash[:alert] = @review.errors.full_messages
-      # redirect_back(fallback_location: product_path(@product))
       render :index
     end
   end
