@@ -18,30 +18,6 @@ class User < ApplicationRecord
     order(username: :desc).limit(3)
   end
   
-  def self.top_reviewer
-    user = find_by(id: order_by_most_reviews.limit(1).pluck(:id))
-    user.tap do |u| 
-      u.admin = true
-      u.save
-    end
-  end
-
-  # def self.remove_admins(admins)
-  #   admins.each do |user|
-  #     if user != self.top_reviewer 
-  #       user.admin = false
-  #       user.save
-  #     end
-  #   end 
-  # end
-
-  # def self.admin
-  #   if where(admin: true).size > 1
-  #     remove_admins(where(admin: true)).first
-  #   else
-  #     top_reviewer
-  #   end
-  # end
 
 
 
