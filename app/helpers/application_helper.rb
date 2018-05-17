@@ -20,4 +20,10 @@ module ApplicationHelper
     render  "layouts/nav/dropdown"
   end 
 
+  def flash_message(flash)
+    if flash
+      content_tag :div, flash, 'role' => "alert", class: "alert alert-success"
+    end
+  end
+
 end

@@ -11,4 +11,8 @@ module ReviewsHelper
     end
   end
 
+  def delete_comment(review)
+    link_to "remove comment", "/products/#{review.product_id}/reviews/#{review.id}", class: "badge badge-danger", method: 'delete' if review.user == current_user
+  end
+
 end

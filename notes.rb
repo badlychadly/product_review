@@ -1,6 +1,4 @@
 
 
 
-  # only admin can destroy, edit product
-
-#  remove user_id from review errors
+#  user show page displays products user commented on or likes

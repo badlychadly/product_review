@@ -22,10 +22,5 @@ module ProductsHelper
     link_to "Delete Product", product_path(@product), method: 'delete', class: 'badge badge-danger offset-sm-4' if current_user == top_user
   end
 
-  def flash_message(flash)
-    if flash
-      content_tag :div, flash, 'role' => "alert", class: "alert alert-success"
-    end
-  end
 
 end

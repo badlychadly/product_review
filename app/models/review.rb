@@ -9,4 +9,8 @@ class Review < ApplicationRecord
     user.username
   end
 
+  def product_id
+    product.id
+  end
+
 end

@@ -1,5 +1,6 @@
 
-<div class="container-fluid">
+<div class="container">
+  <%= flash_message(flash[:notice]) %>
   <h2> <%= @product.name %></h2>
   <div class="row mx-auto">
 

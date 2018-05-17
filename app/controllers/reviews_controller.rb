@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in
   before_action :find_product_review, except: [:create]
-  after_action :check_top_reviewer, only: [:create]
   
 
   def index
@@ -29,6 +28,15 @@ class ReviewsController < ApplicationController
       redirect_to product_path(@product)
   end
 
+  def destroy
+    if @review.user == current_user
+      @review.destroy
+      redirect_back(fallback_location: product_reviews_path(@product), notice: "comment removed")
+    else
+      redirect_back(fallback_location: product_reviews_path(@product))
+    end
+  end
+
 
   private 
 
@@ -41,7 +49,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content)
   end
 
-  def check_top_reviewer
-    User.top_reviewer
-  end
 end
