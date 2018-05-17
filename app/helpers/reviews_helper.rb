@@ -11,10 +11,4 @@ module ReviewsHelper
     end
   end
 
-  def review_errors(flash)
-    if !flash.nil?
-      content_tag :div, flash.first, class: "text-danger"
-    end
-  end
-
 end
