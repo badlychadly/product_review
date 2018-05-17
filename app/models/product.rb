@@ -5,20 +5,13 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, :link, :price, presence: true
 
+  scope :most_reviews, -> {joins(:reviews).group(:name).order(Arel.sql("COUNT(reviews.id) DESC"))}
+  scope :best_voted, -> {order(cached_votes_up: :desc)}
+  scope :most_recent, -> {order(:created_at)}
 
   def reviews_content
     reviews.pluck(:content)
   end
 
-  def self.most_reviews 
-    joins(:reviews).group(:name).order("COUNT(product_id)DESC")
-  end
-
-  def self.best_voted
-    order(cached_votes_up: :desc)
-  end
-
-  def self.most_recent
-    order(:created_at)
-  end
 end
+
