@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to product_reviews_path(@product)
     else
       render :new
     end
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update_attributes(product_params)
-      redirect_to product_path(@product)
+      redirect_to product_reviews_path(@product)
     else
       render :edit
     end
@@ -33,12 +33,21 @@ class ProductsController < ApplicationController
 
   def upvote
     @product.upvote_by current_user
-    redirect_back(fallback_location: product_path(@product))
+    redirect_back(fallback_location: product_reviews_path(@product))
   end
 
   def downvote
     @product.downvote_from current_user
-    redirect_back(fallback_location: product_path(@product))    
+    redirect_back(fallback_location: product_reviews_path(@product))    
+  end
+
+  def destroy
+    if current_user == top_user
+      @product.destroy
+      redirect_to products_path
+    else
+      redirect_back(fallback_location: product_reviews_path(@product))
+    end
   end
 
 

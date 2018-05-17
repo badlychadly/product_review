@@ -18,6 +18,9 @@ class User < ApplicationRecord
     order(username: :desc).limit(3)
   end
   
+  def self.most_reviews
+    find_by(id: order_by_most_reviews.limit(1))
+  end
 
 
 

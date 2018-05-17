@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
    redirect_to(controller: 'sessions', action: 'new') unless logged_in?
   end
 
+  def top_user
+    User.most_reviews
+  end
+
 end
