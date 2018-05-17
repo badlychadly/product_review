@@ -44,7 +44,8 @@ class ProductsController < ApplicationController
   def destroy
     if current_user == top_user
       @product.destroy
-      redirect_to products_path
+      
+      redirect_to products_path, notice: "Product has been removed"
     else
       redirect_back(fallback_location: product_reviews_path(@product))
     end

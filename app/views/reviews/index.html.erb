@@ -13,7 +13,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><%= @product.description %></li>
         <li class="list-group-item"><%= link_to "see on Amazon", @product.link %></li>
-        <li class="list-group-item text-danger">$<%= @product.price %> <%= link_to "Delete Product", product_path(@product), method: 'delete', class: 'badge badge-danger offset-sm-4' %></li>
+        <li class="list-group-item text-danger">$<%= @product.price %> <%= delete_product %></li>
       </ul>
     </div>
   </div>
