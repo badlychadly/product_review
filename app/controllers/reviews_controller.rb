@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in
   before_action :find_product_review, except: [:create]
-  helper_method :review_errors
+  after_action :check_top_reviewer, only: [:create]
+  
 
   def index
     
@@ -38,5 +39,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:content)
+  end
+
+  def check_top_reviewer
+    User.top_reviewer
   end
 end

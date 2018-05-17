@@ -1,6 +1,6 @@
 module ProductsHelper
   def image_link(product)
-    link_to product_path(product) do 
+    link_to product_reviews_path(product) do 
       yield
     end
   end
