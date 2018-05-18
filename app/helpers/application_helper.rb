@@ -26,4 +26,8 @@ module ApplicationHelper
     end
   end
 
+  def alert_for_errors(obj)
+    
+  end
+
 end

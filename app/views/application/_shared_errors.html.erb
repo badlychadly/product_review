@@ -1,6 +1,10 @@
 <% if obj.errors.any? %>
-  <% obj.errors.each do |attribute, message| %>
-    <%= "#{attribute unless attribute == :user_id} #{message}" %> <br>
-  <% end %>
+  <ul class="list-group">
+    <% obj.errors.each do |attribute, message| %>
+      
+        <span class="text-danger"><%= "#{attribute unless attribute == :user_id} #{message}" %></span>
+      
+      
+    <% end %>
+  </ul>
 <% end %>
-<br><br>
