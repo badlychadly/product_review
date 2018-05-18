@@ -4,13 +4,13 @@ class ReviewsController < ApplicationController
   
 
   def index
-    
+    @review = Review.new
   end
 
 
   def create
     @product = Product.find_by(id: params[:product_id])
-    @review = @product.reviews.build(review_params)
+    @review = Review.new(review_params)
     @review.user = current_user
     if @review.save
       redirect_back(fallback_location: product_path(@product)) 
@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :product_id)
   end
 
 end

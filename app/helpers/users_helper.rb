@@ -12,7 +12,5 @@ module UsersHelper
   #  end 
   # end
 
-  def method_name
-    
-  end
+  
 end
