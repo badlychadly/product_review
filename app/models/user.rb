@@ -22,6 +22,14 @@ class User < ApplicationRecord
     find_by(id: order_by_most_reviews.limit(1))
   end
 
+  def self.find_or_create_omniauth(auth)
+    where(email: auth['info']['email']).first_or_create do |user|
+      user.username = auth['info']['name']
+      user.uid = auth['uid']
+      user.password = SecureRandom.hex
+    end 
+  end
+
 
 
   private
