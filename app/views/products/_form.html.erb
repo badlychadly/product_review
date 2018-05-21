@@ -1,53 +1,44 @@
 
 
-<%= render partial: "shared_errors", locals: {obj: @product} %>
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :link %>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-      </div>
-      <%= f.text_field :link, class: "form-control" %>
-    </div> 
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-8">
     
-  </div>
-  <div class="form-group">
-    <%= f.label :img, "Image Url" %>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-      </div>
-      <%= f.text_field :img, class: "form-control" %>
+    <%= form_for @product do |f| %>
+    <%= render partial: "shared_errors", locals: {obj: @product} %>
+
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+
+          <%= f.label :link %>
+          <%= f.text_field :link, placeholder: "http://a.co/btzTDTN", class: "form-control" %>
+          
+          
+        
+          <%= f.label :img, "Image Url" %>
+            <%= f.text_field :img, placeholder: "https://amazon.com/images.jpg", class: "form-control" %>
+          
+          <%= f.label :price %>
+          
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              <%= f.text_field :price, class: "form-control" %>
+            </div>
+          </div>
+        
+          <%= f.label :description %>
+            
+            <%= f.text_area :description, class: "form-control" %>
+          
+      <%= f.submit %>
+    <% end %>
+      
+      
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :price %>
-    
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">$</span>
-      </div>
-      <%= f.text_field :price, class: "form-control" %>
-      <div class="input-group-append">
-        <span class="input-group-text">.00</span>
-      </div>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><%= f.label :description %></span>
-      </div>
-      <%= f.text_area :description, class: "col" %>
-    </div>
-  </div>
-  
+
   
   
   
