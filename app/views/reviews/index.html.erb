@@ -14,7 +14,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><%= @product.description %></li>
         <li class="list-group-item"><%= link_to "see on Amazon", @product.link %></li>
-        <li class="list-group-item text-danger">$<%= @product.price %> <%= delete_product %></li>
+        <li class="list-group-item text-danger">$<%= @product.price %> <%= delete_product %> <%=edit_product %></li>
       </ul>
     </div>
   </div>

@@ -19,7 +19,11 @@ module ProductsHelper
   end
 
   def delete_product
-    link_to "Delete Product", product_path(@product), method: 'delete', class: 'badge badge-danger offset-sm-4' if current_user == top_user
+    link_to "Delete Product", product_path(@product), method: 'delete', class: 'badge badge-danger offset-sm-1' if current_user == top_user
+  end
+
+  def edit_product
+    link_to "Edit Product", edit_product_path(@product), class: 'badge badge-warning offset-sm-1' if current_user == top_user
   end
 
 

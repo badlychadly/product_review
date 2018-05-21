@@ -1,9 +1,7 @@
 
-<div class="container">
   <h2>Edit <%= @product.name %></h2>
   
   <%= form_for @product do |f| %>
     <%= render partial: "form", locals: {f: f} %>
     <%= f.submit "Edit Product" %>
   <% end %>
-</div>
