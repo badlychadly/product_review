@@ -1,5 +1,8 @@
 <div class="container">
-  <h1> <%= current_user.username %>'s page</h1> 
+  <h1 class="justify-content-between d-flex"> 
+    <%= current_user.username %>'s page
+    
+  </h1> 
   <%= flash_message(flash[:notice]) %>
   
   

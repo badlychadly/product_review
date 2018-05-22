@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def nav_content
     if logged_in?
-      drop_down_nav
+      user_dropdown_nav
     else
       amazon_img_login_link + login_nav_link + signup_nav_link
     end
@@ -16,8 +16,8 @@ module ApplicationHelper
     content_tag(:li, link_to("Signup", signup_path, class: "nav-link"), class: "nav-item")
   end
 
-  def drop_down_nav
-    render  "layouts/nav/user_dropdown"
+  def user_dropdown_nav
+    render  "layouts/nav/user_dropdown" if logged_in?
   end 
 
   def product_dropdown

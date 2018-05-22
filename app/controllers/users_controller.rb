@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy 
+    redirect_to signup_path, notice: "Your account has been deleted"
+  end
+
   private 
 
   def user_params
