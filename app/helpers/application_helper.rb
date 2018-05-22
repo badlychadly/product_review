@@ -17,8 +17,12 @@ module ApplicationHelper
   end
 
   def drop_down_nav
-    render  "layouts/nav/dropdown"
+    render  "layouts/nav/user_dropdown"
   end 
+
+  def product_dropdown
+    render "layouts/nav/product_dropdown" if logged_in?
+  end
 
   def amazon_img_login_link
     link_to('/auth/amazon') do

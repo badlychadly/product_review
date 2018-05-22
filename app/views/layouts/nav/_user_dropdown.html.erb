@@ -4,7 +4,7 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
       <%= link_to "my reviews", user_path(current_user), class: "dropdown-item" %>
-      <a class="dropdown-item" href="#">Another action</a>
+      <%= link_to "Edit my info", edit_user_path(current_user), class: "dropdown-item" %>
       <%= link_to "Logout", logout_path, class: "dropdown-item", method: "delete" %>
     </div>
   </li>
