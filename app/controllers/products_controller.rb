@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update_attributes(product_params)
-      redirect_to product_reviews_path(@product)
+      redirect_to product_reviews_path(@product), notice: "Update successful!"
     else
       render :edit
     end
