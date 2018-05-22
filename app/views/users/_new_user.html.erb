@@ -1,0 +1,22 @@
+
+  <%= render partial: "shared_errors", locals: {obj: @user} %>
+  
+    <%= f.label :username, class: "d-block" %>
+    <%= f.text_field :username, class: "form-control mb-2" %>
+  
+  
+    <%= f.label :email, class: "d-block" %>
+    <%= f.email_field :email, class: "form-control mb-2" %>
+  
+  
+    <%= f.label :password, class: "d-block" %>
+    <%= f.password_field :password, class: "form-control mb-2" %>
+  
+  
+    <%= f.label :password_confirmation, "Confirmation", class: "d-block" %>
+    <%= f.password_field :password_confirmation, class: "form-control mb-2" %>
+
+    <%= f.submit btn_text, class: "btn btn-dark mt-1" %>
+
+  
+  

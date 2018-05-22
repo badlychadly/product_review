@@ -1,11 +1,14 @@
   <h1>Signup</h1>
   
-  <%= render partial: "shared_errors", locals: {obj: @user} %>
   
   
-  <%= form_for(@user, url: signup_path) do |f| %>
-    <%= render partial: "signup", locals: {f: f} %>
-  <% end %>
+  
+  <div class="row bg-light">
+    <div class="col-md-6">
+       <%= user_form(@user, signup_path, "Signup") %>
+      
+    </div>
+  </div>
 
 
 

@@ -1,8 +1,11 @@
 
 <h2>Edit <%= current_user.username %>s' info</h2>
 
-<%= render partial: "shared_errors", locals: {obj: @user} %>
 
-<%= form_for @user do |f| %>
-  <%= render partial: "signup", locals: {f: f} %>
-<% end %>
+
+<div class="row bg-light">
+    <div class="col-md-6">
+       <%= user_form(@user, @user, "Edit User") %>
+      
+    </div>
+  </div>

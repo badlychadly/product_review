@@ -1,16 +1,13 @@
 module UsersHelper
 
-  # def users_form_url(user)
-  #   if logged_in?
-  #     form_for user do |f| 
-  #       yield f 
-  #     end
-  #   else
-  #     form_for(user, url: signup_path) do |f| 
-  #       yield f 
-  #     end
-  #  end 
-  # end
+  def user_form(user, url, btn_text)
+    form_for(user, url: url) do |f|
+    
+     render partial: "new_user", locals: {f: f, btn_text: btn_text}
+     
+    end 
+  end
+
 
   
 end
