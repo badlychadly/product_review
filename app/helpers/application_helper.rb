@@ -36,8 +36,8 @@ module ApplicationHelper
     end
   end
 
-  def alert_for_errors(obj)
-    
+  def page_header(header_text)
+    content_tag :h1, header_text, {class: "text-center bg-light card-body"} 
   end
 
 end

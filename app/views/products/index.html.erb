@@ -3,9 +3,10 @@
 <% end %>
 
 
-<div class="container">
+
   
-  <h2>Products</h2>
+  <%= page_header("Products") %>
+
 
   <%= flash_message(flash[:notice], "success") %>
 
@@ -22,5 +23,4 @@
     <li><%= product.price %></li>
     <br>
   <% end %>
-</div>
 

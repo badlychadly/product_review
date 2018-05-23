@@ -3,7 +3,8 @@
 <% end %>
 
 
-  <h2>Edit <%= @product.name %></h2>
+  <%= page_header("Edit #{@product.name}") %>
+
   
     <%= render partial: "form"%>
     
