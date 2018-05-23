@@ -36,8 +36,11 @@ module ApplicationHelper
     end
   end
 
-  def page_header(header_text)
-    content_tag :h1, header_text, {class: "text-center bg-light card-body"} 
+  def page_header(header_text, sub_header: nil)
+    content_tag :div, class: "card-body  bg-light text-center" do
+    content_tag(:h1, header_text, {class: ""}) +
+    content_tag(:p, sub_header, class: "h4")
+    end
   end
 
 end
