@@ -5,15 +5,18 @@
 
 
   
-  <%= page_header("Products") %>
+  <%= page_header("Products", sub_header: "Order Products by...") %>
 
 
   <%= flash_message(flash[:notice], "success") %>
 
-  <%= form_tag products_path, method: :get, action: :index, class: 'form-row mb-5' do %>
-    <%= select_tag "filter by", raw("<option>Most Reviews</option><option>Best Voted</option><option>Most Recent</option>"), class: 'form-control w-50' %>
-    <%= submit_tag "filter", class: 'btn btn-success' %>
-  <% end %>
+  <div class="d-flex justify-content-center">
+    <%= form_tag products_path, method: :get, action: :index, class: 'd-flex col-sm-6' do %>
+      <%= select_tag "filter by", raw("<option>Most Reviews</option><option>Best Voted</option><option>Most Recent</option>"), class: 'form-control form-control-lg' %>
+      <%= submit_tag "Filter", class: 'btn btn-primary' %>
+    <% end %>
+
+  </div>
   
   <% @products.each do |product| %>
     <img src="<%=product.img%>" alt="" width="200" height="200">
