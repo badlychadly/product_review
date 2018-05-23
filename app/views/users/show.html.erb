@@ -3,12 +3,11 @@
   users-page
 <% end %>
 
+    
+    <%= link_to "Delete account", user_path(@user), method: :delete, class: "badge badge-pill badge-danger float-right" %>
+    <h1 class=" text-center bg-light card-body"> <%= current_user.username %>'s page </h1> 
 
-  <div class="row">
-    <h1 class="d-flex justify-content-around card-body"> <%= current_user.username %>'s page</h1> 
-    <%= link_to "Delete account", user_path(@user), method: :delete, class: "d-flex justify-content-end flex-column" %>
-
-  </div>
+  
 
 
   <%= flash_message(flash[:notice], "success") %>
@@ -17,11 +16,11 @@
   
         <div class="row">
           <% current_user.products.each do |product| %>
-            <div class="container col-sm-3 bg-light">
+            <div class="container col-sm-3 bg-secondary">
               <%= image_link(product) do %>
             <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
             <% end %>
-            <p class="font-weight-bold w-70"><%=product.name %></p>
+            <p class="font-weight-bold w-70 text-light"><%=product.name %></p>
             <%= render partial: "modal_description", locals: {product: product} %>
             <%= render partial: "modal_reviews", locals: {product: product} %>
             
