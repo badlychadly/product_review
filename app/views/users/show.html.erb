@@ -4,7 +4,7 @@
 <% end %>
 
     
-    <%= link_to "Delete account", user_path(@user), method: :delete, class: "badge badge-pill badge-danger float-right" %>
+    <%= link_to "Delete account", user_path(@user), method: :delete, class: "badge badge-pill badge-danger float-right", data: {confirm: "Are you Sure??"} %>
     <h1 class=" text-center bg-light card-body"> <%= current_user.username %>'s page </h1> 
 
   
