@@ -30,9 +30,9 @@ module ApplicationHelper
     end 
   end
 
-  def flash_message(flash)
+  def flash_message(flash, color)
     if flash
-      content_tag :div, flash, 'role' => "alert", class: "alert alert-success"
+      content_tag :div, flash, 'role' => "alert", class: "alert alert-#{color}"
     end
   end
 

@@ -1,9 +1,9 @@
 <div class="container">
   <h1 class="justify-content-between d-flex"> 
     <%= current_user.username %>'s page
-    
+    <small> <%= link_to "Delete account", user_path(@user), method: :delete %></small>
   </h1> 
-  <%= flash_message(flash[:notice]) %>
+  <%= flash_message(flash[:notice], "success") %>
   
   
   

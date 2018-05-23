@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+   
   end
 
   def edit
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy 
+    session[:user_id] = nil
     redirect_to signup_path, notice: "Your account has been deleted"
   end
 
