@@ -1,3 +1,9 @@
+<% content_for :title do %>
+  Edit Review
+<% end %>
+
+
+
 <%= form_for @review, url: product_review_path(@product, @review) do |f| %>
   <%= f.text_area :content %>
   <%= f.submit %>
