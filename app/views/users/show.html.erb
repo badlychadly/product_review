@@ -17,13 +17,15 @@
   
         <div class="d-flex flex-wrap bg-secondary">
           <% current_user.products.each do |product| %>
-            <div class="col-sm-3">
+            <div class="col-sm-3 mb-5">
               <%= image_link(product) do %>
-            <img class="img-thumbnail" src="<%= product.img %>" alt="Card image cap">
+            <img class="img-thumbnail img-fluid w-100" src="<%= product.img %>" alt="Card image cap" style="height: 20em;">
             <% end %>
             <p class="font-weight-bold w-70 text-light"><%=product.name %></p>
-            <%= render partial: "modal_description", locals: {product: product} %>
-            <%= render partial: "modal_reviews", locals: {product: product} %>
+            
+                <%= render partial: "modal_description", locals: {product: product} %>
+                <%= render partial: "modal_reviews", locals: {product: product} %>
+
             
             </div>
           <% end %>
