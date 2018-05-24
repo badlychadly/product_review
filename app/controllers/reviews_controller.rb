@@ -31,6 +31,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    redirect_to edit_product_review_path(@product, @review)
+  end
+
   def destroy
     if @review.user == current_user
       @review.destroy

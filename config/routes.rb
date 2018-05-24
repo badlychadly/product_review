@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static#welcome'
   
   resources :products, except: [:show] do
-    resources :reviews, except: [:new, :show]
+    resources :reviews, except: [:new]
     member do
       put "like", to: "products#upvote"
       put "dislike", to: "products#downvote"
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
 
 
-  resources :users except: [:new, :create]
+  resources :users, except: [:new, :create]
    
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
