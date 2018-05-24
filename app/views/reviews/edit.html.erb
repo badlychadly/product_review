@@ -7,7 +7,7 @@
 
 
 
-<%= form_for @review, url: product_review_path(@product, @review) do |f| %>
+<%= form_for @review, url: product_reviews_path(@product) do |f| %>
   <%= f.text_area :content %>
   <%= f.submit %>
 <% end %>

@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     if @review.save
-      redirect_back(fallback_location: product_path(@product)) 
+      redirect_back(fallback_location: product_reviews_path(@product)) 
     else
       render :index
     end
@@ -24,8 +24,11 @@ class ReviewsController < ApplicationController
   end
 
   def update
-     @review.update_attributes(review_params) 
-      redirect_to product_path(@product)
+    if @review.update_attributes(review_params) 
+      redirect_to product_reviews_path(@product)
+    else 
+      render :edit 
+    end
   end
 
   def destroy

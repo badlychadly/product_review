@@ -6,7 +6,7 @@ module ReviewsHelper
   end
 
   def div_card_for_review(review)
-    content_tag :div, review, class: "card bg-light" do
+    content_tag :div, review, class: "card bg-light border-0" do
       yield
     end
   end

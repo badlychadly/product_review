@@ -1,4 +1,4 @@
 
 
 
-#  user show page displays products user commented on or likes
+# do something about reviews form on reviews/index for new review
