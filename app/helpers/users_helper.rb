@@ -1,8 +1,12 @@
 module UsersHelper
 
-  def user_form(user, url, btn_text)
-    form_for(user, url: url) do |f|
-     render partial: "new_user", locals: {f: f, btn_text: btn_text}
+  def form_for_user(user, url, btn_text)
+    content_tag :div, class: "row bg-light rounded border" do 
+      content_tag :div, class: "col-md-6" do
+        form_for(user, url: url) do |f|
+        render partial: "user_form", locals: {f: f, btn_text: btn_text}
+        end 
+      end
     end 
   end
 

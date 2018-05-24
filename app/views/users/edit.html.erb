@@ -7,9 +7,5 @@
 <%= page_header("Edit #{current_user.username}'s info") %>
 
 
-<div class="row bg-light rounded">
-    <div class="col-md-6">
-       <%= user_form(@user, user_path(@user), "Edit User") %>
-      
-    </div>
-  </div>
+
+       <%= form_for_user(@user, user_path(@user), "Edit User") %>

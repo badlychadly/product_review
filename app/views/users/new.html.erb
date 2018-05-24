@@ -3,7 +3,7 @@
     Signup
   <% end %>
   
-  <h1>Signup</h1>
+  
   <%= page_header("Signup") %>
 
   <%= flash_message(flash[:notice], "danger") %>
@@ -11,12 +11,9 @@
   
   
   
-  <div class="row bg-light rounded">
-    <div class="col-md-6">
-       <%= user_form(@user, signup_path, "Signup") %>
-      
-    </div>
-  </div>
+  
+       <%= form_for_user(@user, signup_path, "Signup") %>
+ 
 
 
 
