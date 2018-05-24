@@ -1,36 +1,22 @@
 
-<% content_for :title do %>
-  users-page
-<% end %>
+  <% content_for :title do %>
+    users-page
+  <% end %>
 
     
-    <%= link_to "Delete account", user_path(@user), method: :delete, class: "badge badge-pill badge-danger float-right", data: {confirm: "Are you Sure??"} %>
+  <%= link_to "Delete account", user_path(@user), method: :delete, class: "badge badge-pill badge-danger float-right", data: {confirm: "Are you Sure??"} %>
     
 
-    <%= page_header("#{current_user.username}",sub_header: "My Reviewed Products:") %>
+  <%= page_header("#{current_user.username}",sub_header: "My Reviewed Products:") %>
   
 
 
   <%= flash_message(flash[:notice], "success") %>
   
   
-  
-        <div class="d-flex flex-wrap bg-secondary">
-          <% current_user.products.each do |product| %>
-            <div class="col-sm-3 mb-5">
-              <%= image_link(product) do %>
-            <img class="img-thumbnail img-fluid w-100" src="<%= product.img %>" alt="Card image cap" style="height: 20em;">
-            <% end %>
-            <p class="font-weight-bold w-70 text-light"><%=product.name %></p>
-            
-                <%= render partial: "modal_description", locals: {product: product} %>
-                <%= render partial: "modal_reviews", locals: {product: product} %>
-
-            
-            </div>
-          <% end %>
-
-        </div>
+  <%= div_flex_for_products do %>
+      <%= render partial: "products/product_display", collection: current_user.products, as: :product %>       
+  <% end %>
 
 
 

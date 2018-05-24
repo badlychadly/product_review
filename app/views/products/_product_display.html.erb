@@ -1,0 +1,14 @@
+
+
+    
+      <div class="col-sm-3 mb-5 border-right border-info">
+        <%= image_link(product) do %>
+      <img class="img-thumbnail img-fluid w-100" src="<%= product.img %>" alt="Card image cap" style="height: 20em;">
+      <% end %>
+      <p class="font-weight-bold w-70 text-light"><%=product.name %></p>
+      
+          <%= render partial: "modal_description", locals: {product: product} %>
+          <%= render partial: "modal_reviews", locals: {product: product} %>
+
+      </div>
+

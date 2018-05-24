@@ -26,5 +26,11 @@ module ProductsHelper
     link_to "Edit Product", edit_product_path(@product), class: 'badge badge-warning offset-sm-1' if current_user == top_user
   end
 
+  def div_flex_for_products
+    content_tag :div, class: "d-flex flex-wrap bg-secondary" do 
+      yield
+    end 
+  end
+
 
 end
