@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    helpers.remove_price_symbol(product_params[:price])
     @product = Product.new(product_params)
     if @product.save
       redirect_to product_reviews_path(@product)

@@ -32,5 +32,9 @@ module ProductsHelper
     end 
   end
 
+  def remove_price_symbol(product_params)
+    product_params.delete!("$")
+  end
+
 
 end

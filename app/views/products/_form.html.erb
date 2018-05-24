@@ -8,29 +8,27 @@
     <%= form_for @product do |f| %>
     <%= render partial: "shared_errors", locals: {obj: @product} %>
 
-          <%= f.label :name %>
-          <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
 
-          <%= f.label :link %>
-          <%= f.text_field :link, placeholder: "http://a.co/btzTDTN", class: "form-control" %>
-          
-          
+        <%= f.label :link %>
+        <%= f.text_field :link, placeholder: "http://a.co/btzTDTN", class: "form-control" %>
         
-          <%= f.label :img, "Image Url" %>
-            <%= f.text_field :img, placeholder: "https://amazon.com/images.jpg", class: "form-control" %>
-          
-          <%= f.label :price %>
-          
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
-              <%= f.text_field :price, class: "form-control" %>
-            </div>
+        
+      
+        <%= f.label :img, "Image Url" %>
+        <%= f.text_field :img, placeholder: "https://amazon.com/images.jpg", class: "form-control" %>
+        
+        <%= f.label :price %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+            <%= f.text_field :price, class: "form-control" %>
           </div>
-        
-          <%= f.label :description %>
-            
-            <%= f.text_area :description, class: "form-control mb-3" %>
+        </div>
+      
+        <%= f.label :description %>         
+        <%= f.text_area :description, class: "form-control mb-3" %>
           
       <%= f.submit class: "btn btn-primary" %>
     <% end %>
