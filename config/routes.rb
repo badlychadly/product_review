@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
 
 
-  resources :users, except: [:new, :create]
+  resources :users except: [:new, :create]
    
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
