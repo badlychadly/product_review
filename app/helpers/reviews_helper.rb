@@ -2,7 +2,15 @@ module ReviewsHelper
 
   def review_edit_link(review)  
     
-    link_to "Edit Review", edit_product_review_path(review.product, review), class: "card-link" if review.user == current_user && review.persisted?
+    link_to "Edit Review", edit_product_review_path(review.product, review), class: link_display(review)
+  end
+
+  def link_display(review)
+    if review.user == current_user && review.persisted?
+      "card-link"
+    else 
+      "card-link d-none"
+    end
   end
 
   def div_card_for_review(review)
