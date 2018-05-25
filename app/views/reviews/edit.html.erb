@@ -6,12 +6,7 @@
 
 
 
+<%= render partial: "review_form", locals: {product: @product, review: @review} %>
 
-<%= form_for [@product, @review] do |f| %>
-      <%= render partial: "shared_errors", locals: {obj: @review} if !!@review %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.text_area :content, class: "form-control-lg col p-3 mt-4" %>
-        <%= f.submit "Add Review", class: "mb-5 btn btn-outline-info" %>
-      <% end %>
 
 

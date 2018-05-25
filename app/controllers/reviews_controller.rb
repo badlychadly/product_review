@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in
-  before_action :find_product_review, except: [:create]
+  before_action :find_product_review
   
 
   def index
@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
 
 
   def create
-    @product = Product.find_by(id: params[:product_id])
     @review = Review.new(review_params)
     @review.user = current_user
     if @review.save

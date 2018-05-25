@@ -34,11 +34,7 @@
       <h3 class="text-center mb-5">Reviews</h3>
       <%= render collection: @product.reviews, partial: "card_reviews", as: :review %>
       
-      <%= form_for [@product, @review] do |f| %>
-      <%= render partial: "shared_errors", locals: {obj: @review} if !!@review %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.text_area :content, class: "form-control-lg col p-3 mt-4" %>
-        <%= f.submit "Add Review", class: "mb-5 btn btn-outline-info" %>
-      <% end %>
+      <%= render partial: "review_form", locals: {product: @product, review: @review} %>
+
     </div> 
     
