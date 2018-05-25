@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   acts_as_votable
   validates :name, presence: true, uniqueness: true
   validates :description, :link, :price, :img, presence: true
+  validates :price, numericality: true
 
   scope :most_reviews, -> {joins(:reviews).group(:name).order(Arel.sql("COUNT(reviews.id) DESC"))}
   scope :best_voted, -> {order(cached_votes_up: :desc)}
