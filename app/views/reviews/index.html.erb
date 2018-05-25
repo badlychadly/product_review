@@ -33,8 +33,7 @@
     <div class="col-sm-6">
       <h3 class="text-center mb-5">Reviews</h3>
       <%= render collection: @product.reviews, partial: "card_reviews", as: :review %>
-      
-      <%= render partial: "review_form", locals: {product: @product, review: @review} %>
-
     </div> 
+    <h2 class="font-weight-light text-primary text-center mt-2 border-bottom border-top">Add Review</h2>
+    <%= render partial: "review_form", locals: {product: @product, review: @review} %>
     
