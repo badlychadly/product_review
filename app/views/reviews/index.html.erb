@@ -23,8 +23,8 @@
     <div class="col-12 col-sm-6 align-self-center">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><%= @product.description %></li>
-        <li class="list-group-item"><%= link_to "see on Amazon", @product.link %></li>
-        <li class="list-group-item text-danger">$<%= @product.price %> <%= delete_product %> <%= edit_product %></li>
+        <li class="list-group-item"><%= link_to "See on Amazon", @product.link, {class: "btn btn-warning font-weight-bold"} %></li>
+        <li class="list-group-item text-danger">Price: $<%= @product.price %> <%= delete_product %> <%= edit_product %></li>
       </ul>
     </div>
   </div>
@@ -34,6 +34,7 @@
       <h3 class="text-center mb-5">Reviews</h3>
       <%= render collection: @product.reviews, partial: "card_reviews", as: :review %>
     </div> 
+    
     <h2 class="font-weight-light text-primary text-center mt-2 border-bottom border-top">Add Review</h2>
     <%= render partial: "review_form", locals: {product: @product, review: @review} %>
     
