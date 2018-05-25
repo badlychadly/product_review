@@ -33,22 +33,16 @@ To get started with product_review, you must create an account. An option is ava
 
 To add a new product you must fill out all of the input fields, otherwise errors will be displayed until you correct them, and your product will not be added. Once added you will want to give a review on that product and give it an up or downvote to let others know what you think about it.
 
-Things you may want to cover:
 
-* Ruby version
+## Contributing 
 
-* System dependencies
+If you wish to improve the app, report any bugs, or wish to share a better way of doing something please feel free to submit a pull request at https://github.com/badlychadly/product_review
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+##License 
 
-* How to run the test suite
+This project cantains a Learn.co and Flatiron School LLC Educational Content License https://learn.co/content-license
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Authors 
+* **Chad Montoya**
