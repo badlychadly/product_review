@@ -12,12 +12,12 @@ Specs:
 - [x The navbar has a login link, a form is displayed that asks for email and password, on completion they will either be given the session id and access the site, or rerender the form and see the errors ] Include login (how e.g. Devise)
 - [x logout link can also be found in the navbar and when clicked will route the http delete request to the destroy action in the sessions controller which will delete the session[:user_id] loging the user out. ] Include logout (how e.g. Devise)
 - [x This app uses the omniauth gem, and omniauth-amazon to give the user the option to login via amazon. If a user signs in through the third party my db only saves email, username, and uid ] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x The resource reviews is nested inside of products resource all actions are available except for #new, since a new review is created on the product_review_path page which is the reviews/index page. ] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x to create a new review for a product you must scroll down to the bottom of the product_reviews page the form for reviews contains a hidden_field to keep track of the product_id. ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+- [x the _shared_errors partial displays validation errors for any object if they exist, this partial is included in every form ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [ ] The application is pretty DRY
 - [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x ] Views use helper methods if appropriate
+- [x ] Views use partials if appropriate
