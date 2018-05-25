@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    
     helpers.remove_price_symbol(product_params[:price])
     @product = Product.new(product_params)
     if @product.save
@@ -56,7 +57,7 @@ class ProductsController < ApplicationController
   private 
 
   def product_params
-    params.require(:product).permit(:name, :description, :link, :img, :price)
+    params.require(:product).permit(:name, :description, :link, :img, :price, :added_by)
   end
 
   def find_product

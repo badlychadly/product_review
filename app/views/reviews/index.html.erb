@@ -2,14 +2,14 @@
   product/reviews-page
 <% end %>
 
+<%= added_by_text(@product) %>
 
 
-
+<%= page_header(@product.name) %>
 
   <%= flash_message(flash[:notice], "success") %>
   
   
-  <%= page_header(@product.name) %>
 
 
   <div class="row mx-auto">

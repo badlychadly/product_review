@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_05_16_030000) do
     t.string "link"
     t.string "img"
     t.float "price"
+    t.string "added_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cached_votes_total", default: 0

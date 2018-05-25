@@ -23,7 +23,7 @@ module ProductsHelper
   end
 
   def edit_product
-    link_to "Edit Product", edit_product_path(@product), class: 'badge badge-warning offset-sm-1' if current_user == top_user
+    link_to "Edit Product", edit_product_path(@product), class: 'badge badge-warning offset-sm-1' if current_user.username == @product.added_by
   end
 
   def div_flex_for_products
@@ -34,6 +34,10 @@ module ProductsHelper
 
   def remove_price_symbol(product_params)
     product_params.delete!("$")
+  end
+
+  def added_by_text(product)
+    content_tag :p, "Added By: #{product.added_by}", class: "float-right" if !!product.added_by
   end
 
 

@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :link
       t.string :img
       t.float :price
+      t.string :added_by
 
       t.timestamps
     end
