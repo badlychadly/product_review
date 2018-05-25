@@ -40,9 +40,9 @@ If you wish to improve the app, report any bugs, or wish to share a better way o
 
 
 
-##License 
+## License 
 
 This project cantains a Learn.co and Flatiron School LLC Educational Content License https://learn.co/content-license
 
-##Authors 
+## Authors 
 * **Chad Montoya**
