@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_action :current_user
   before_action :require_logged_in, except: [:new, :create]
 
+
+  def index 
+    @users = User.all
+  end
+
+
   def new
     @user = User.new
   end

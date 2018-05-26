@@ -10,7 +10,7 @@
 
   <%= flash_message(flash[:notice], "success") %>
 
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center mt-2">
     <%= form_tag products_path, method: :get, action: :index, class: 'd-flex col-sm-6 mb-5' do %>
       <%= select_tag "filter by", raw("<option>Most Reviews</option><option>Best Voted</option><option>Most Recent</option>"), class: 'form-control form-control-lg' %>
       <%= submit_tag "Filter", class: 'btn btn-primary' %>
