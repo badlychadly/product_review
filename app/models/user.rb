@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :username, presence: true 
 
   scope :order_by_most_reviews, -> {joins(:reviews).group(:username).order("COUNT(user_id)DESC")}
+  scope :order_with_counted_reviews, -> {order_by_most_reviews.count}
 
   def self.first_three
     order(:username).limit(3)

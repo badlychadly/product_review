@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  User Rankings
+<% end %>
+
+
+
+  
+  <%= page_header("User Rankings", sub_header: "See where you are ranked") %>
+
+  <ol>
+    <% @users.each do |name, reviews| %> 
+    <div class="card-body">
+      <li class="font-italic"> <%= "#{name}, Number of Reviews - #{reviews}" %></li> 
+    </div>
+    <% end %>
+  </ol>
