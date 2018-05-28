@@ -6,15 +6,14 @@
 <%= page_header("Login") %>
 
 
-<% if flash[:alert] %>
-  <small class="form-text text-danger"><%= flash[:alert] %></small>
-<% end %>
 
 
 <div class="row d-flex justify-content-center">
   <div class="col-md-6">
     <%= form_for(:session, url: login_path) do |f| %>
-
+    <%= div_for_errors(flash[:alert]) do %>
+    <small class="form-text text-danger"><%= flash[:alert] %></small>
+    
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
@@ -22,6 +21,7 @@
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.submit "Log in", class: "btn btn-dark mt-3 px-4" %>
+      <% end %>
     <% end %>
   </div>
 </div>
