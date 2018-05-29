@@ -1,15 +1,19 @@
 class User < ApplicationRecord
-  has_many :reviews, dependent: :destroy
-  has_many :products, through: :reviews
-  acts_as_voter
-
-  has_secure_password
-  before_validation :normalize_name
-  validates :email, presence: true, uniqueness: true
-  validates :username, presence: true 
-
   scope :order_by_most_reviews, -> {joins(:reviews).group(:username).order("COUNT(user_id)DESC")}
   scope :order_with_counted_reviews, -> {order_by_most_reviews.count}
+
+  has_many :reviews, dependent: :destroy
+  has_many :products, through: :reviews
+  
+  validates :email, presence: true, uniqueness: true
+  validates :username, presence: true 
+  has_secure_password
+  acts_as_voter
+
+  before_validation :normalize_name
+
+
+
 
   def self.first_three
     order(:username).limit(3)
