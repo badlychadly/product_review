@@ -10,11 +10,9 @@ module SessionsHelper
     end
   end
 
-  def login_errors(user, params)
-    if user.nil? && !user.try(:authenticate, params)
-      "Invalid Email/Password"
-    elsif user.nil? 
-      "Invalid Email"
+  def login_errors(user)
+    if user.nil? 
+      "No account with that email exists"
     else 
       "Invalid Password"
     end

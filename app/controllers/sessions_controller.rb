@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to products_path
     else
-      @user = User.find_by(email: params[:session][:email])
-      if @user.try(:authenticate, params[:session][:password])
+      @user = User.find_user_email(params)
+      if @user.try(:authorized?, params)
         session[:user_id] = @user.id
         redirect_to products_path
       else
-        flash[:alert] = helpers.login_errors(@user, params[:session][:password])
+        flash[:alert] = helpers.login_errors(@user)
         render :new
       end
     end

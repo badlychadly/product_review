@@ -15,10 +15,10 @@
     <small class="form-text text-danger"><%= flash[:alert] %></small>
     
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control', required: true %>
 
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control', required: true %>
 
       <%= f.submit "Log in", class: "btn btn-dark mt-3 px-4" %>
       <% end %>

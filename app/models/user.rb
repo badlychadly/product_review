@@ -30,6 +30,15 @@ class User < ApplicationRecord
       user.password = SecureRandom.hex
     end 
   end
+  
+  def self.find_user_email(params)
+    User.find_by(email: params[:session][:email])
+  end
+
+  def authorized?(params)
+    try(:authenticate, params[:session][:password])
+  end
+
 
 
 
