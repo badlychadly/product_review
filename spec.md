@@ -17,7 +17,7 @@ Specs:
 - [x the _shared_errors partial displays validation errors for any object if they exist, this partial is included in every form ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [x ] Views use helper methods if appropriate
-- [x ] Views use partials if appropriate
+- [x ] The application is pretty DRY
+- [x Controllers have been thinned out and only contain logic that required redirects, or rendering] Limited logic in controllers
+- [x There is a #page_header helper that styles the header of each page with an option of a subheader] Views use helper methods if appropriate
+- [x The heft of my html is in views/application which contains partials for cards, and modals, and buttons ] Views use partials if appropriate
