@@ -19,5 +19,5 @@ Specs:
 Confirm:
 - [x ] The application is pretty DRY
 - [x Controllers have been thinned out and only contain logic that required redirects, or rendering] Limited logic in controllers
-- [x There is a #page_header helper that styles the header of each page with an option of a subheader] Views use helper methods if appropriate
-- [x The heft of my html is in views/application which contains partials for cards, and modals, and buttons ] Views use partials if appropriate
+- [x In ApplicationController helper methods can be found, such as current_user, logged_in?, and top_user] Views use helper methods if appropriate
+- [x The heft of my html is in views/application which contains partials for cards, modals, and buttons ] Views use partials if appropriate
