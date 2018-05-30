@@ -11,3 +11,5 @@
 # how do I avoid making changes on all of my views, when they all need different content, like how I use my header helper method on every view
 
 # how to clean up url when the products filter is submitted?
+
+# how to handle .env omniauth credentials for someone who wants to add to my app
