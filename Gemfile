@@ -11,6 +11,9 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
+gem 'active_model_serializers'
+
 gem 'omniauth'
 gem 'omniauth-amazon'
 gem 'dotenv-rails'
