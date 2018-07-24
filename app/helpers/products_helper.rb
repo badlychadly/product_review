@@ -27,7 +27,7 @@ module ProductsHelper
   end
 
   def div_flex_for_products
-    content_tag :div, class: "d-flex flex-wrap bg-secondary" do 
+    content_tag :div, id: "productsContent", class: "d-flex flex-wrap bg-secondary" do 
       yield
     end 
   end
