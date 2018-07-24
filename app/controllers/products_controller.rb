@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = helpers.products_filter(params)
+    respond_to do |format|
+      format.html {render 'index'}
+      format.js {render json: @products}
+    end
   end
 
   def new
