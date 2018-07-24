@@ -1,6 +1,8 @@
-$(function () {
+$(function() {
     $('form').submit(function (event) {
         event.preventDefault();
-        alert("form taken")
+        $.get('/products', function (data) {
+            debugger;
+        })
     })
 })
