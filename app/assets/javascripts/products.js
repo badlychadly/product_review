@@ -4,10 +4,7 @@ $(function() {
         $.ajax({
             type: ($("input[name='_method']").val() || this.method),
             url: this.action,
-            data: $(this).serialize(), // either JSON or querystring serializing
-            // success: function(response){
-                
-            // }
+            data: $(this).serialize(),
             dataType: 'script'
         });
 
