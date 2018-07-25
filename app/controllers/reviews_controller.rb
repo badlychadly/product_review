@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :require_logged_in
-  before_action :find_product_review
+  before_action :find_product_review, except: [:create]
   
 
   def index
@@ -9,9 +9,10 @@ class ReviewsController < ApplicationController
 
 
   def create
-    
     @review = Review.new(review_params)
     @review.user = current_user
+    @product = @review.product
+    
     if @review.save
       render 'create.js', :layout => false 
     else

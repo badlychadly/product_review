@@ -13,3 +13,5 @@
 # how to clean up url when the products filter is submitted?
 
 # how to handle .env omniauth credentials for someone who wants to add to my app
+
+# why does my page take so long to load.
