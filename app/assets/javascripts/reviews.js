@@ -11,8 +11,3 @@ $(function() {
 })
 
 
-// $(document).on('turbolinks:load', function() {
-
-//     ...your javascript goes here...
-  
-//   });

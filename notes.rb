@@ -15,3 +15,8 @@
 # how to handle .env omniauth credentials for someone who wants to add to my app
 
 # why does my page take so long to load.
+
+# /////////////////What I did to make reviews ajax post work//////////////////
+# 1. changed event hander on my filter form in products.js from $('form') to $('#searchForm')
+# 2. removed javascript include tag from products/index (products.js was being rendered twice)
+# 3. added datatype: 'script' to ajax post for new review
