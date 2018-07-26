@@ -5,11 +5,9 @@ class ProductsController < ApplicationController
   def index
     @products = helpers.products_filter(params)
     respond_to do |format|
-      # binding.pry
       format.html {render 'index'}
       format.js {render 'index.js', :layout => false}
     end
-    # render :json => @products
   end
 
   def new
