@@ -9,8 +9,9 @@ class ReviewsController < ApplicationController
 
 
   def create
-    @review = Review.new(review_params)
-    @review.user = current_user
+    
+    @review = current_user.reviews.build(review_params)
+    
     if @review.save
       redirect_back(fallback_location: product_reviews_path(@product)) 
     else
@@ -45,6 +46,8 @@ class ReviewsController < ApplicationController
 
 
   private 
+
+  # try removing the @review portion
 
   def find_product_review
     @product = Product.find_by(id: params[:product_id])
