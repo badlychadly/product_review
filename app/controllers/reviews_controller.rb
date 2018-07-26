@@ -11,9 +11,8 @@ class ReviewsController < ApplicationController
   def create
     
     @review = current_user.reviews.build(review_params)
-    
     if @review.save
-      redirect_back(fallback_location: product_reviews_path(@product)) 
+      render 'create.js', :layout => false 
     else
       render :index
     end
