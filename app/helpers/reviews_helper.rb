@@ -14,13 +14,13 @@ module ReviewsHelper
   end
 
   def div_card_for_review(review)
-    content_tag :div, review, class: "card bg-light" do
+    content_tag :div, review, class: "reviewCard card bg-light", data: {id: "#{review.id}"} do
       yield
     end
   end
 
   def delete_comment(review)
-    link_to "remove comment", "/products/#{review.product_id}/reviews/#{review.id}", class: "badge badge-danger", method: 'delete' if review.user == current_user
+    link_to "remove comment", "/products/#{review.product_id}/reviews/#{review.id}", class: "badge badge-danger", id: "deleteComment", method: 'delete' if review.user == current_user
   end
 
 end

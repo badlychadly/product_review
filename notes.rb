@@ -20,3 +20,7 @@
 # 1. changed event hander on my filter form in products.js from $('form') to $('#searchForm')
 # 2. removed javascript include tag from products/index (products.js was being rendered twice)
 # 3. added datatype: 'script' to ajax post for new review
+# ///////////////////////////////////
+
+# continue on deleting comment
+# find way to iterate over review cards
