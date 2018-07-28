@@ -36,9 +36,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.user == current_user
-      # binding.pry
       @review.destroy
-      # render 'index'
+      render :index, :layout => false
+
+      # render 'destroy.js', :layout => false
       # redirect_back(fallback_location: product_reviews_path(@product), notice: "comment removed")
     else
       redirect_back(fallback_location: product_reviews_path(@product))

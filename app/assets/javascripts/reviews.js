@@ -10,18 +10,26 @@ $(function() {
         })
         event.preventDefault()
     })
+})
 
-    $('#deleteComment').on('click', function (event) {
+$(function() {
+    $('#deleteComment').submit(function (event) {
+        // debugger;
+        id = this.dataset.num
         $.ajax({
             type: "DELETE",
-            url: this.href,
+            url: this.action,
+            data: $(this).serialize(),
+            // dataType: 'script'
             success: function (data) {
-                debugger
+                // debugger;
+                $(`[data-id="${id}"]`).html("")
             }
         })
-
+    
         event.preventDefault()
     })
+    
 })
 
 

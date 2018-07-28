@@ -22,5 +22,5 @@
 # 3. added datatype: 'script' to ajax post for new review
 # ///////////////////////////////////
 
-# continue on deleting comment
-# find way to iterate over review cards
+#how to use ajax to delete review??
+#try making delete a form instead of a link
