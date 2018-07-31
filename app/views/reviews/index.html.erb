@@ -4,6 +4,7 @@
 
 
 <%= added_by_text(@product) %>
+<%= link_to "Next Product", product_reviews_path(@product), class: "nextProduct float-right" %>
 
 
 <%= page_header(@product.name) %>
