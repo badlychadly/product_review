@@ -26,3 +26,5 @@
 # if I add my reivews.js code into the browser terminal it works
 
 # why use ajax if I can just get my info using the model macros
+
+# can I have to many javascript global variables?

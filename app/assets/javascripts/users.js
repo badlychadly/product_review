@@ -1,15 +1,17 @@
 $(function() {
-    $('.load_reviews').on('click', function (event) {
-        $.get(this.href + '.json', function (json) {
-            // debugger;
-            // json.reviews.forEach(function (review) {
-            //     $('#insert_reviews').append(`<p>${review.content}</p>`)
-            // })
-            reviewsHtml = HandlebarsTemplates['reviews_list']({
-                reviews: json.reviews
-            });
-            $('#insert_reviews').append(reviewsHtml)
-        })
+    countReviewLinkClicks = 0
+    $('.load_reviews').click(function (event) {
+        ++countReviewLinkClicks
+        if ((countReviewLinkClicks % 2) === 0) {
+            $('#reviewsList').html("")
+        } else {
+            $.get(this.href + '.json', function (json) {
+                reviewsHtml = HandlebarsTemplates['reviews_list']({
+                    reviews: json.reviews
+                });
+                $('#insert_reviews').append(reviewsHtml)
+            })
+        }
         event.preventDefault()
     })    
 })

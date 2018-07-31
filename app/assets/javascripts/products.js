@@ -11,4 +11,11 @@ $(function() {
 
         event.preventDefault();
     })
+
+
+    $('.nextProduct').click(function (event) {
+        $.get(`/products`)
+
+        event.preventDefault()
+    })
 })
