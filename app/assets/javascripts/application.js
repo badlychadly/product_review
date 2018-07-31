@@ -13,6 +13,8 @@
 //= require jquery3
 //= require rails-ujs
 //= require turbolinks
+//= require handlebars
+//= require_tree ./templates
 
 //= require popper
 //= require bootstrap-sprockets
