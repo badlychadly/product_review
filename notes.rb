@@ -22,5 +22,7 @@
 # 3. added datatype: 'script' to ajax post for new review
 # ///////////////////////////////////
 
-#how to use ajax to delete review??
-#try making delete a form instead of a link
+# ajax won't be processed as js unless I refresh page
+# if I add my reivews.js code into the browser terminal it works
+
+# why use ajax if I can just get my info using the model macros

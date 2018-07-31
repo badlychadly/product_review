@@ -2,6 +2,7 @@ $(function() {
     $('#new_review').submit(function (event) {
         $.ajax({
             type: ($("input[name='_method']").val() || this.method),
+            async: true,
             url: this.action,
             data: $(this).serialize(),
             dataType: 'script'
@@ -18,6 +19,7 @@ $(function() {
         id = this.dataset.num
         $.ajax({
             type: "DELETE",
+            async: true,
             url: this.action,
             data: $(this).serialize(),
             // dataType: 'script'
