@@ -14,7 +14,13 @@ $(function() {
 
 
     $('.nextProduct').click(function (event) {
-        $.get(`/products`)
+        // id = $(this).data('productId') + 1;
+        id = parseInt($(this).attr("data-product-id")) + 1
+        // debugger;
+        $.get(`/products/${id}/reviews`, function (data) {
+            $('body').html($.parseHTML(data))
+            $(this).attr("data-product-id", (id + 1))
+        })
 
         event.preventDefault()
     })

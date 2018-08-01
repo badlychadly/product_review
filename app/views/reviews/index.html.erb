@@ -4,9 +4,8 @@
 
 
 <%= added_by_text(@product) %>
-<%= link_to "Next Product", product_reviews_path(@product), class: "nextProduct float-right" %>
+<%= link_to "Next Product", product_reviews_path(@product), class: "nextProduct float-right", data: {product_id: @product.id} %>
 
-<div class="bg-primary rounded-circle badge text-white" data-product-id="<%=@product.id%>"><%=@product.id%></div>
 
 
 <%= page_header(@product.name) %>
