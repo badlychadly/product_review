@@ -12,16 +12,14 @@ $(function() {
         event.preventDefault();
     })
 
-
-    $('.nextProduct').click(function (event) {
-        // id = $(this).data('productId') + 1;
-        id = parseInt($(this).attr("data-product-id")) + 1
-        // debugger;
-        $.get(`/products/${id}/reviews`, function (data) {
-            $('body').html($.parseHTML(data))
-            $(this).attr("data-product-id", (id + 1))
-        })
-
-        event.preventDefault()
-    })
+    $(document).on('click', '.nextProduct', function (event) {
+        // $('.nextProduct').click(function (event) {
+            var id = parseInt($(this).attr("data-product-id")) + 1
+            $.get(`/products/${id}/reviews`, function (data) {
+                $('body').html($.parseHTML(data))
+            })
+    
+            event.preventDefault()
+        
+    });
 })
