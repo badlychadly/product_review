@@ -12,11 +12,11 @@ $(function() {
         event.preventDefault();
     })
 
-    $(document).on('click', '.nextProduct', function (event) {
-        // $('.nextProduct').click(function (event) {
+    $('#pageContainer').on('click', '.nextProduct', function (event) {
             var id = parseInt($(this).attr("data-product-id")) + 1
             $.get(`/products/${id}/reviews`, function (data) {
-                $('body').html($.parseHTML(data))
+                var html = $.parseHTML(data)
+                $('#pageContainer').html($(html).filter('#pageContainer'))
             })
     
             event.preventDefault()
