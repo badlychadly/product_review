@@ -1,21 +1,19 @@
 $(function() {
-    $(document).on('submit', '#new_review', function (event) {
+    $(document).on('submit', '#new_review', function(event) {
         
-        // $('#new_review').submit(function (event) {
             $.ajax({
                 type: ($("input[name='_method']").val() || this.method),
                 async: true,
                 url: this.action,
                 data: $(this).serialize(),
                 dataType: 'script'
-            }).done(function () {
+            }).done( function () {
                 $('#review_content').val("").attr("disabled", true)
             })
             event.preventDefault()
-        // })
     })
 
-    $(document).on('submit', '#deleteComment', function (event) {
+    $(document).on('submit', '#deleteComment', function(event) {
             var id = this.dataset.num
             $.ajax({
                 type: "DELETE",
@@ -31,7 +29,7 @@ $(function() {
             })
         
             event.preventDefault()
-        // })
+
         
     })
 
