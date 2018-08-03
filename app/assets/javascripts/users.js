@@ -1,9 +1,9 @@
-$(function() {
-    countReviewLinkClicks = 0
-    $('.load_reviews').click(function (event) {
-        ++countReviewLinkClicks
-        if ((countReviewLinkClicks % 2) === 0) {
-            $('#reviewsList').html("")
+$(document).on('turbolinks:load', function () {
+    
+   
+    $(document).on('click', '.load_reviews', function(event) {
+        if ($('#reviewsList').children().is('li')) {
+            $('#reviewsList').remove()
         } else {
             $.get(this.href + '.json', function (json) {
                 reviewsHtml = HandlebarsTemplates['reviews_list']({
