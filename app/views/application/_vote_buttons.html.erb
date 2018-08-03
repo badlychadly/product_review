@@ -1,13 +1,13 @@
 
 <div class="btn-group-vertical mx-auto" id="votes">
-    <%= link_to like_product_path(@product), method: :put, id: "upVote", class: "btn btn-success mb-1" do %> 
+    <%= link_to like_product_path(@product), method: :put, id: "upVote", class: "btn btn-success mb-1", data: {turbolinks: false} do %> 
     Upvote
-    <span class="badge badge-light"><%= @product.get_upvotes.size %></span>
+    <span class="badge badge-light" id="upVoteCount"><%= @product.get_upvotes.size %></span>
     <span class="sr-only">Upvotes</span>
     <% end %>
     <%= link_to dislike_product_path(@product), method: :put, id: "downVote", class: "btn btn-success" do %> 
     Downvote
-    <span class="badge badge-light"><%= @product.get_downvotes.size %></span>
+    <span class="badge badge-light" id="downVoteCount"><%= @product.get_downvotes.size %></span>
     <span class="sr-only">Downvotes</span>
     <% end %>
   </div>

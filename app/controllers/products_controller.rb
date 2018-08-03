@@ -38,12 +38,12 @@ class ProductsController < ApplicationController
 
   def upvote
     @product.upvote_by current_user
-    redirect_back(fallback_location: product_reviews_path(@product))
+    render json: @product
   end
 
   def downvote
     @product.downvote_from current_user
-    redirect_back(fallback_location: product_reviews_path(@product))    
+    render json: @product   
   end
 
   def destroy

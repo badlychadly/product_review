@@ -22,14 +22,34 @@ $(document).on('turbolinks:load', function () {
 
     $('#votes').on('click', '#upVote', function(event) {
         // debugger;
-    //    $.ajax({
-    //         type: this.dataset.method,
-    //         url: this.pathname,
-    //         success: function () {
-    //             // debugger;
-                
-    //         }
-    //    })
+       $.ajax({
+            type: this.dataset.method,
+            url: this.pathname,
+            data: "html",
+            success: function (product) {
+                // debugger;
+                $('#upVoteCount').text(product.cached_votes_up) 
+                $('#downVoteCount').text(product.cached_votes_down)
+            }
+       })
+    
+        event.preventDefault()
+        event.stopPropagation()
+    })
+
+
+    $('#votes').on('click', '#downVote', function(event) {
+        // debugger;
+       $.ajax({
+            type: this.dataset.method,
+            url: this.pathname,
+            data: "html",
+            success: function (product) {
+                // debugger;
+                $('#upVoteCount').text(product.cached_votes_up) 
+                $('#downVoteCount').text(product.cached_votes_down)
+            }
+       })
     
         event.preventDefault()
         event.stopPropagation()
