@@ -21,7 +21,15 @@ $(document).on('turbolinks:load', function () {
     });  
 
     $('#votes').on('click', '#upVote', function(event) {
-    //    debugger;
+        // debugger;
+    //    $.ajax({
+    //         type: this.dataset.method,
+    //         url: this.pathname,
+    //         success: function () {
+    //             // debugger;
+                
+    //         }
+    //    })
     
         event.preventDefault()
         event.stopPropagation()

@@ -6,11 +6,10 @@
 
 # how to change numerical validation input before validation? ex price on product
 
-#how to dry up all of the redirects in my controllers?
 
-# how do I avoid making changes on all of my views, when they all need different content, like how I use my header helper method on every view
 
-# how to clean up url when the products filter is submitted?
+
+
 
 # how to handle .env omniauth credentials for someone who wants to add to my app
 
@@ -22,8 +21,7 @@
 # 3. added datatype: 'script' to ajax post for new review
 # ///////////////////////////////////
 
-# ajax won't be processed as js unless I refresh page
-# if I add my reivews.js code into the browser terminal it works
+
 
 # why use ajax if I can just get my info using the model macros
 
