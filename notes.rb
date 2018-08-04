@@ -26,3 +26,5 @@
 # why use ajax if I can just get my info using the model macros
 
 # can I have to many javascript global variables?
+
+# when the next page link is clicked it somehow disables the votes click handler

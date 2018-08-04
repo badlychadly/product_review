@@ -4,7 +4,9 @@
 
 
 <%= added_by_text(@product) %>
-<%= link_to "Next Product", product_reviews_path(@product), class: "nextProduct float-right", data: {product_id: @product.id} %>
+<div class="float-right" id="divForLink">
+  <%= link_to "Next Product", product_reviews_path(@product), class: "nextProduct", data: {product_id: @product.id} %>
+</div>
 
 
 

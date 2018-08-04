@@ -1,6 +1,6 @@
 
 <div class="btn-group-vertical mx-auto" id="votes">
-    <%= link_to like_product_path(@product), method: :put, id: "upVote", class: "btn btn-success mb-1", data: {turbolinks: false} do %> 
+    <%= link_to like_product_path(@product), method: :put, id: "upVote", class: "btn btn-success mb-1" do %> 
     Upvote
     <span class="badge badge-light" id="upVoteCount"><%= @product.get_upvotes.size %></span>
     <span class="sr-only">Upvotes</span>
