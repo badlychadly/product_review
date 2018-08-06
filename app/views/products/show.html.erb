@@ -8,6 +8,8 @@
 
 <%= link_to "Different Product", product_path(@product), class: "float-right", id: "differentProduct", data: {product: @product.id}  %>
 
+<%= link_to "See Reviews", product_reviews_path(@product), class: "btn btn-primary", id: "seeReviews" %>
+
 <div id="newContent" class="d-flex justify-content-center card-columns">
     <img src="<%= @product.img %>" alt="Product img" width="300" height="300">
     <div class="card col-sm-4">
