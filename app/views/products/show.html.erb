@@ -1,0 +1,17 @@
+
+<% content_for :title do %>
+    product
+  <% end %>
+
+
+  <%= page_header(@product.name) %>
+
+<%= link_to "Different Product", product_path(@product), class: "float-right" %>
+  <div class="d-flex justify-content-center card-columns">
+      <img src="<%= @product.img %>" alt="Product img" width="300" height="300">
+      <div class="card col-sm-4">
+    <div class="card-body">
+    <%=@product.description%>
+    </div>
+  </div>
+    </div>

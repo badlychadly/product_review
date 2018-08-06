@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'static#welcome'
   
-  resources :products, except: [:show] do
+  resources :products do
     resources :reviews, except: [:new]
     member do
       put "like", to: "products#upvote"
