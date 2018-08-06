@@ -1,3 +1,3 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :cached_votes_up, :cached_votes_down
+  attributes :id, :name, :description, :img, :cached_votes_up, :cached_votes_down
 end

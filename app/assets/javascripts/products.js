@@ -57,4 +57,20 @@ $(document).on('turbolinks:load', function () {
         event.stopImmediatePropagation()
     })
 
+
+    $('body').on('click', '#differentProduct', function (event) {
+        var nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
+        // debugger;
+        $.get(`/products/${nextId}.json`, function (product) {
+            var productHtml = HandlebarsTemplates['product_page']({
+                img: product.img,
+                description: product.description
+            });
+            // debugger;
+            $('#newContent').html(productHtml)
+            $('#differentProduct').attr("data-product", product["id"])
+        })
+        event.preventDefault()
+    })
+
 })
