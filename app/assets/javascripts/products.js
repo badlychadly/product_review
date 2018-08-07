@@ -1,25 +1,23 @@
 
 
 function Product(attributes) {
-        this.name = name
-        this.description = description
-        this.link = link 
-        this.img = img 
-        this.price = price
-        this.cached_votes_up = cached_votes_up
-        this.cached_votes_down = cached_votes_down
+    this.name = name
+    this.description = description
+    this.link = link 
+    this.img = img 
+    this.price = price
+    this.cached_votes_up = cached_votes_up
+    this.cached_votes_down = cached_votes_down
 }
 
 Product.filterForm = function (event) {
-    // $(document).on('submit', '#searchForm', function(event) {
-            $.ajax({
-                type: this.method,
-                url: this.action,
-                data: $(this).serialize(),
-                dataType: 'script'
-            });
-            event.preventDefault();   
-    // })
+    $.ajax({
+        type: this.method,
+        url: this.action,
+        data: $(this).serialize(),
+        dataType: 'script'
+    });
+    event.preventDefault();   
     
 }
 
@@ -28,19 +26,26 @@ Product.filterFormListener = function () {
 }
 
 
+Product.nextProduct = function (event) {
+    var id = parseInt($(this).attr("data-product-id")) + 1
+    $.get(`/products/${id}/reviews`, function (data) {
+        var html = $.parseHTML(data)
+        $('#pageContainer').html($(html).filter('#pageContainer'))
+    })
+    event.preventDefault() 
+    event.stopImmediatePropagation()
+}
+
+Product.nextProductListener = function () {
+    $(document).on('click', '.nextProduct', Product.nextProduct);
+}
+
+
 $(document).on('turbolinks:load', function () {
     Product.filterFormListener()
+    Product.nextProductListener()
     
-    $(document).on('click', '.nextProduct', function(event) {
-        var id = parseInt($(this).attr("data-product-id")) + 1
-        $.get(`/products/${id}/reviews`, function (data) {
-            var html = $.parseHTML(data)
-            $('#pageContainer').html($(html).filter('#pageContainer'))
-        })
-        event.preventDefault() 
-        event.stopImmediatePropagation()
-        
-    });  
+      
 
     $('body').on('click', '#upVote', function(event) {
         // debugger;
