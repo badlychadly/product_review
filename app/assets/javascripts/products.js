@@ -1,7 +1,17 @@
 
-$(document).on('turbolinks:load', function () {
 
-    $(document).on('submit', '#searchForm', function(event) {
+function Product(attributes) {
+        this.name = name
+        this.description = description
+        this.link = link 
+        this.img = img 
+        this.price = price
+        this.cached_votes_up = cached_votes_up
+        this.cached_votes_down = cached_votes_down
+}
+
+Product.filterForm = function (event) {
+    // $(document).on('submit', '#searchForm', function(event) {
             $.ajax({
                 type: this.method,
                 url: this.action,
@@ -9,7 +19,17 @@ $(document).on('turbolinks:load', function () {
                 dataType: 'script'
             });
             event.preventDefault();   
-    })
+    // })
+    
+}
+
+Product.filterFormListener = function () {
+    $(document).on('submit', '#searchForm', Product.filterForm)
+}
+
+
+$(document).on('turbolinks:load', function () {
+    Product.filterFormListener()
     
     $(document).on('click', '.nextProduct', function(event) {
         var id = parseInt($(this).attr("data-product-id")) + 1
