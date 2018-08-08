@@ -5,17 +5,21 @@ function Review(attributes) {
 
 
 Review.reviewFormSubmit = function(event) {
-    // debugger;
     $.ajax({
         type: this.method,
-        async: true,
         url: this.action,
         data: $(this).serialize(),
         dataType: 'script'
-    }).done(function() {
-        $('#review_content').val("").attr("disabled", true)
-    }).fail(function (data) {
+        // dataType: (!!$('#review_content').val()) ? 'html' : 'script'
+        // error: function (html) {
+        //     debugger;
+        // }
+    }).done(function(html) {
         // debugger;
+        // $(html).children('div.field_with_errors'))
+        if ($($.parseHTML(html)).children().is('input')) {
+            $('#new_review').html(html)
+        }  
     })
     event.preventDefault()
 }
@@ -50,10 +54,7 @@ Review.deleteReview = function(event) {
         async: true,
         url: this.action,
         data: $(this).serialize(),
-        success: function(json) {
-            Review.destroy(json)
-            
-        }
+        success: (json) => Review.destroy(json) 
     })
 
     event.preventDefault()

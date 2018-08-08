@@ -10,11 +10,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(review_params)
-    
-    if @review.save
-      render 'create.js', :layout => false 
-    else
-      render :index
+    respond_to do |format|
+      if @review.save
+        format.js {render 'create.js', :layout => false} 
+      else
+        format.js {render partial: 'review_form', locals: {review: @review, product: @product}}
+        # binding.pry
+        
+      end
     end
   end
 
@@ -38,7 +41,6 @@ class ReviewsController < ApplicationController
     if @review.user == current_user
       @review.destroy
       render json: @review
-      # render :index, :layout => false
     else
       redirect_back(fallback_location: product_reviews_path(@product))
     end

@@ -1,5 +1,5 @@
 
-
 var html = "<%= j(render partial: "card_reviews", locals: {review: @review}) %>"
 
 $('#reviews').append(html)
+$('#review_content').val("").attr("disabled", true)
