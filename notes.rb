@@ -23,8 +23,8 @@
 
 
 
-# why use ajax if I can just get my info using the model macros
+# /////////////////ACTIVERECORD LOCKED DB ERROR///////////
+    # Somehow turbolinks was causing my action and events to be double called
+    #disabling turbolinks seemed to resolve the issue
 
-# can I have to many javascript global variables?
-
-# when the next page link is clicked it somehow disables the votes click handler
+# //////////////////////////////////////////////////////
