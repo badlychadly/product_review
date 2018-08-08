@@ -26,17 +26,33 @@ Review.reviewFormListener = function() {
 }
 
 
+Review.prototype.findCard = function () {
+    return $(`[data-id="${this.id}"]`)
+}
+
+
+Review.prototype.destroy = function () {
+    this.findCard().remove()
+    $('#review_content').attr("disabled", false)
+    $('[value="Create Review"]').attr("disabled", false)
+}
+
+
+Review.destroy = function (json) {
+    var review = new Review(json)
+    review.destroy()
+}
+
+
 Review.deleteReview = function(event) {
-    var id = this.dataset.num
     $.ajax({
         type: "DELETE",
         async: true,
         url: this.action,
         data: $(this).serialize(),
-        success: function(data) {
-            $(`[data-id="${id}"]`).remove()
-            $('#review_content').attr("disabled", false)
-            $('[value="Create Review"]').attr("disabled", false)
+        success: function(json) {
+            Review.destroy(json)
+            
         }
     })
 
@@ -54,7 +70,3 @@ $(function () {
     Review.reviewFormListener()
     Review.deleteReviewListener()
 })
-// $(document).on('turbolinks:load', function() {
-//     Review.reviewFormListener()
-//     Review.deleteReviewListener()
-// })
