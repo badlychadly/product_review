@@ -29,4 +29,5 @@
 
 # //////////////////////////////////////////////////////
 
-# figure out why field with errors is not working
+# add methods to reviews to change form text area from red and back
+# try to make create.js more oop

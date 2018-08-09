@@ -3,3 +3,5 @@ var html = "<%= j(render partial: "card_reviews", locals: {review: @review}) %>"
 
 $('#reviews').append(html)
 $('#review_content').val("").attr("disabled", true)
+$('#new_review').children('ul.list-group').remove()
+$('#review_content').css({"border-color": "rgb(169, 169, 169)"})

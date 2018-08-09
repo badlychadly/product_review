@@ -10,27 +10,19 @@ Review.reviewFormSubmit = function(event) {
         url: this.action,
         data: $(this).serialize(),
         dataType: 'script'
-        // dataType: (!!$('#review_content').val()) ? 'html' : 'script'
-        // error: function (html) {
-        //     debugger;
-        // }
-    }).done(function(html) {
-        // debugger;
-        // $(html).children('div.field_with_errors'))
-        // debugger;
-        // if ($($.parseHTML(html)).children().is('input')) {
-        //     $('#new_review').html(html)
-        // }  
     }).fail(function (resp) {
-        debugger;
-        $($.parseHTML(resp.responseText)).filter('#new_review')
+        var $form = $($.parseHTML(resp.responseText)).filter('#new_review')
+        // debugger;
+        $('#new_review').replaceWith($form)
+        
+        $('#review_content').css({"border": "1px solid red"})
     })
     event.preventDefault()
 }
 
 
 Review.reviewFormListener = function() {
-    $(document).on('submit', '#new_review', Review.reviewFormSubmit)
+    $(document).on('submit', 'form#new_review.new_review', Review.reviewFormSubmit)
 }
 
 
