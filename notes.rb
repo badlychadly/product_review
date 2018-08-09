@@ -28,3 +28,5 @@
     #disabling turbolinks seemed to resolve the issue
 
 # //////////////////////////////////////////////////////
+
+# figure out why field with errors is not working

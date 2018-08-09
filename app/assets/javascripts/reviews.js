@@ -17,9 +17,13 @@ Review.reviewFormSubmit = function(event) {
     }).done(function(html) {
         // debugger;
         // $(html).children('div.field_with_errors'))
-        if ($($.parseHTML(html)).children().is('input')) {
-            $('#new_review').html(html)
-        }  
+        // debugger;
+        // if ($($.parseHTML(html)).children().is('input')) {
+        //     $('#new_review').html(html)
+        // }  
+    }).fail(function (resp) {
+        debugger;
+        $($.parseHTML(resp.responseText)).filter('#new_review')
     })
     event.preventDefault()
 }

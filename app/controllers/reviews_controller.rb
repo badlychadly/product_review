@@ -11,10 +11,12 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(review_params)
     respond_to do |format|
+      # binding.pry
       if @review.save
-        format.js {render 'create.js', :layout => false} 
+        format.js {render 'create.js', :layout => false, status: 201} 
       else
-        format.js {render partial: 'review_form', locals: {review: @review, product: @product}}
+        format.js {render :index, layout: false, status: :unprocessable_entity}
+        # format.js {render partial: 'review_form', locals: {review: @review, product: @product}}
         # binding.pry
         
       end
