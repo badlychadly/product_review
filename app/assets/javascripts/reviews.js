@@ -83,12 +83,16 @@ $(function () {
     Review.deleteReviewListener()
 
     $(document).on('click', '.editReviewLink', function (event) {
-        // $('.editReviewLink.card-link').not('.d-none')
-        console.log(this)
+        
+        var $card = $('.editReviewLink.card-link').not('.d-none').parents(".reviewCard")
         $.get(this.href).done(function (data) {
             // debugger;
-            // $(data).filter('form').attr('id')
+            $('#new_review').remove()
+            var $editForm = $(data).filter('form')
+            var reviewId = $editForm.attr('data-review-id')
+            $card.replaceWith($editForm)
         })
         event.preventDefault()
     })
+
 })
