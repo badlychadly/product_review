@@ -29,5 +29,5 @@
 
 # //////////////////////////////////////////////////////
 
-# add methods to reviews to change form text area from red and back
-# try to make create.js more oop
+# Edit review ajax
+# maybe change create @review to json

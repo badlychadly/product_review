@@ -3,6 +3,22 @@ function Review(attributes) {
     this.content = attributes.content
 }
 
+function redBorder() {
+    $('#review_content').css({"border": "1px solid red"})
+}
+
+function normalizeBorder() {
+    $('#review_content').css({"border-color": "rgb(169, 169, 169)"})
+    $('#new_review').children('ul.list-group').remove()
+}
+
+
+Review.invalid = function (resp) {
+    var $form = $($.parseHTML(resp.responseText)).filter('#new_review')
+        $('#new_review').replaceWith($form)
+        redBorder()
+}
+
 
 Review.reviewFormSubmit = function(event) {
     $.ajax({
@@ -10,13 +26,7 @@ Review.reviewFormSubmit = function(event) {
         url: this.action,
         data: $(this).serialize(),
         dataType: 'script'
-    }).fail(function (resp) {
-        var $form = $($.parseHTML(resp.responseText)).filter('#new_review')
-        // debugger;
-        $('#new_review').replaceWith($form)
-        
-        $('#review_content').css({"border": "1px solid red"})
-    })
+    }).fail(Review.invalid)
     event.preventDefault()
 }
 
@@ -41,6 +51,7 @@ Review.prototype.destroy = function () {
 Review.destroy = function (json) {
     var review = new Review(json)
     review.destroy()
+    normalizeBorder()
 }
 
 
