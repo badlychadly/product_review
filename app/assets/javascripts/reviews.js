@@ -14,9 +14,10 @@ function normalizeBorder() {
 
 
 Review.invalid = function (resp) {
-    var $form = $($.parseHTML(resp.responseText)).filter('#new_review')
-        $('#new_review').replaceWith($form)
+    var $form = $($.parseHTML(resp.responseText)).filter('form')
+    $form.is('#new_review') ? $('#new_review').replaceWith($form) : $('.edit_review').replaceWith($form)
         redBorder()
+        $('#review_content').val("")
 }
 
 
@@ -49,9 +50,6 @@ Review.prototype.destroy = function () {
 
 
 
-
-
-
 Review.destroy = function (json) {
     var review = new Review(json)
     review.destroy()
@@ -76,23 +74,32 @@ Review.deleteReviewListener = function() {
     $(document).on('submit', '#deleteComment', Review.deleteReview)
 }
 
+Review.updateReviewListener = function () {
+    $(document).on('submit', '.edit_review', Review.reviewFormSubmit)    
+}
+
+
+Review.getEditForm = function (event) {
+    var $card = $('.editReviewLink.card-link').not('.d-none').parents(".reviewCard")
+    $.get(this.href).done(function (data) {
+        $('#new_review').hide()
+        var $editForm = $(data).filter('form')
+        var reviewId = $editForm.attr('data-review-id')
+        $card.replaceWith($editForm)
+    })
+    event.preventDefault()
+}
+
+
+Review.editLinkListener = function() {
+    $(document).on('click', '.editReviewLink', Review.getEditForm)  
+}
+
 
 
 $(function () {
     Review.reviewFormListener()
     Review.deleteReviewListener()
-
-    $(document).on('click', '.editReviewLink', function (event) {
-        
-        var $card = $('.editReviewLink.card-link').not('.d-none').parents(".reviewCard")
-        $.get(this.href).done(function (data) {
-            // debugger;
-            $('#new_review').remove()
-            var $editForm = $(data).filter('form')
-            var reviewId = $editForm.attr('data-review-id')
-            $card.replaceWith($editForm)
-        })
-        event.preventDefault()
-    })
-
+    Review.editLinkListener()
+    Review.updateReviewListener()
 })

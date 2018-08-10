@@ -25,10 +25,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update_attributes(review_params) 
-      redirect_to product_reviews_path(@product)
-    else 
-      render :edit 
+    respond_to do |format|
+      if @review.update_attributes(review_params) 
+        format.js {render 'update.js', :layout => false}
+      else 
+        format.js {render :index, layout: false, status: :unprocessable_entity} 
+      end
     end
   end
 
