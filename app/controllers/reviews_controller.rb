@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
+    render layout: false
   end
 
   def update

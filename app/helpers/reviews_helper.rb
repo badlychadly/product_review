@@ -1,8 +1,7 @@
 module ReviewsHelper
 
   def review_edit_link(review)  
-    
-    link_to "Edit Review", edit_product_review_path(review.product, review), class: link_display(review)
+    link_to "Edit Review", edit_product_review_path(review.product, review), class: "editReviewLink  #{link_display(review)}"
   end
 
   def link_display(review)

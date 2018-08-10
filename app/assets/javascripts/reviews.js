@@ -48,6 +48,10 @@ Review.prototype.destroy = function () {
 }
 
 
+
+
+
+
 Review.destroy = function (json) {
     var review = new Review(json)
     review.destroy()
@@ -77,4 +81,14 @@ Review.deleteReviewListener = function() {
 $(function () {
     Review.reviewFormListener()
     Review.deleteReviewListener()
+
+    $(document).on('click', '.editReviewLink', function (event) {
+        // $('.editReviewLink.card-link').not('.d-none')
+        console.log(this)
+        $.get(this.href).done(function (data) {
+            // debugger;
+            // $(data).filter('form').attr('id')
+        })
+        event.preventDefault()
+    })
 })
