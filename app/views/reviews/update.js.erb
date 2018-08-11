@@ -3,4 +3,5 @@ var html = "<%= j(render partial: "card_reviews", locals: {review: @review}) %>"
 $('.edit_review').remove()
 $('#new_review').show()
 $('#reviews').append(html)
+$('.productPageLink').remove()
 normalizeBorder()

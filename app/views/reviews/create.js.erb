@@ -2,5 +2,6 @@
 var html = "<%= j(render partial: "card_reviews", locals: {review: @review}) %>"
 
 $('#reviews').append(html)
+$('.productPageLink').remove()
 $('#review_content').val("").attr("disabled", true)
 normalizeBorder()
