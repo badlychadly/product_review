@@ -19,7 +19,7 @@ module ReviewsHelper
   end
 
   def delete_comment(review)
-    # link_to "remove comment", "/products/#{review.product_id}/reviews/#{review.id}", class: "badge badge-danger", id: "deleteComment", method: 'delete' if review.user == current_user
+
 
     form_tag "/products/#{review.product_id}/reviews/#{review.id}", id: "deleteComment", data: {num: review.id}, method: 'delete' do 
       submit_tag "remove review", class: "btn btn-sm btn-danger"

@@ -44,6 +44,24 @@
     
     <h2 class="font-weight-light text-primary text-center mt-2 border-bottom border-top">Add Review</h2>
     <%= render partial: "review_form", locals: {product: @product, review: @review} %>
+
+
+    <script id="card-review" type="text/x-handlebars-template">
+    <div class="reviewCard card bg-light" data-id="{{id}}">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted justify-content-between d-flex">reviewed by:
+  
+        <form id="deleteComment" data-num="{{id}}" action="/products/<%=@product.id%>/reviews/{{id}}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="submit" name="commit" value="remove review" class="btn btn-sm btn-danger" data-disable-with="remove review"></form>
+  
+      </h6>
+      <h5 class="card-title justify-content-between d-flex">{{user.username}}</h5>
+      <p class="card-text">{{content}}</p>
+      <a href="/products/<%=@product.id%>/reviews/{{id}}/edit" class="editReviewLink card-link">Edit Review</a>
+    </div>
+  </div>
+    </script>
     
 
     

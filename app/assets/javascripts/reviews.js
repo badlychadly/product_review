@@ -1,6 +1,8 @@
 function Review(attributes) {
     this.id = attributes.id
     this.content = attributes.content
+    this.user = attributes.user 
+    this.product = attributes.product
 }
 
 function redBorder() {
@@ -13,6 +15,13 @@ function normalizeBorder() {
 }
 
 
+
+
+Review.prototype.renderCard = function() {
+    return Review.template(this)
+}
+
+
 Review.invalid = function (resp) {
     var $form = $($.parseHTML(resp.responseText)).filter('form')
     $form.is('#new_review') ? $('#new_review').replaceWith($form) : $('.edit_review').replaceWith($form)
@@ -21,13 +30,26 @@ Review.invalid = function (resp) {
 }
 
 
+Review.valid = function (json) {
+        var review = new Review(json)
+        var card = review.renderCard()
+        $('.edit_review').remove()
+        $('#new_review').show()
+        $('#reviews').append(card)
+        $('.productPageLink').remove()
+        $('#review_content').val("").attr("disabled", true)
+        normalizeBorder()
+}
+
+
 Review.reviewFormSubmit = function(event) {
     $.ajax({
         type: this.method,
         url: this.action,
         data: $(this).serialize(),
-        dataType: 'script'
-    }).fail(Review.invalid)
+        dataType: 'json'
+    }).done(Review.valid)
+    .fail(Review.invalid)
     event.preventDefault()
 }
 
@@ -98,6 +120,8 @@ Review.editLinkListener = function() {
 
 
 $(function () {
+    Review.templateSource = $("#card-review").html()
+    Review.template = Handlebars.compile(Review.templateSource)
     Review.reviewFormListener()
     Review.deleteReviewListener()
     Review.editLinkListener()
