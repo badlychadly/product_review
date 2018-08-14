@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @review.update_attributes(review_params) 
+      if @review.update_attributes(content: review_params['content']) 
         format.json {render json: @review, status: 202}
       else 
         format.js {render :index, layout: false, status: :unprocessable_entity} 

@@ -46,6 +46,7 @@ class Review {
 
 
     static reviewFormSubmit(event) {
+       
         $.ajax({
                 type: this.method,
                 url: this.action,

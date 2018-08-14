@@ -29,5 +29,4 @@
 
 # //////////////////////////////////////////////////////
 
-# Edit review ajax
-# maybe change create @review to json
+# figure out why the update form for review tries to go to the original product.id instead of the current one
