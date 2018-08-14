@@ -17,6 +17,11 @@ class Product {
     }
 
 
+    renderPage() {
+        return Product.template(this)
+    }
+
+
     static filterForm(event) {
         $.ajax({
             type: this.method,
@@ -77,14 +82,12 @@ class Product {
     
     static differentProduct(event) {
         var nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
-        $.get(`/products/${nextId}.json`).done(function(product) {
-            var productHtml = HandlebarsTemplates['product_page']({
-                img: product.img,
-                description: product.description
-            });
+        $.get(`/products/${nextId}.json`).done(function(json) {
+            var product = new Product(json)
+            var productHtml = product.renderPage()
             $('#newContent').html(productHtml)
-            $('h1.display-4').text(product.name)
-            $('#differentProduct').attr("data-product", product["id"])
+            $('h1.display-4').text(json.name)
+            $('#differentProduct').attr("data-product", json["id"])
         })
         event.preventDefault()
     }
@@ -119,6 +122,7 @@ class Product {
 
 $(function () {
     Product.reviewsTemplate = HandlebarsTemplates['reviews_list']
+    Product.template = HandlebarsTemplates['product_page']
     Product.filterFormListener()
     Product.nextProductListener()
     Product.voteListener()
