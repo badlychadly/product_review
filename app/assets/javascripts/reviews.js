@@ -13,7 +13,16 @@ class Review {
     }
 
 
+     findCard() {
+        return $(`[data-id="${this.id}"]`)
+    }
     
+    
+    destroy() {
+        this.findCard().remove()
+        $('#review_content').attr("disabled", false)
+        $('[value="Create Review"]').attr("disabled", false)
+    }
     
     
     static invalid(resp) {
@@ -50,18 +59,6 @@ class Review {
     
     static reviewFormListener() {
         $(document).on('submit', 'form#new_review.new_review', Review.reviewFormSubmit)
-    }
-    
-    
-    findCard() {
-        return $(`[data-id="${this.id}"]`)
-    }
-    
-    
-    destroy() {
-        this.findCard().remove()
-        $('#review_content').attr("disabled", false)
-        $('[value="Create Review"]').attr("disabled", false)
     }
     
     
