@@ -30,14 +30,14 @@ class Product {
             dataType: 'script'
         });
         event.preventDefault();
-    
+
     }
-    
+
     static filterFormListener() {
         $(document).on('submit', '#searchForm', Product.filterForm)
     }
-    
-    
+
+
     static nextProduct(event) {
         var id = parseInt($(this).attr("data-product-id")) + 1
         $.get(`/products/${id}/reviews`, function(data) {
@@ -47,63 +47,63 @@ class Product {
         event.preventDefault()
         event.stopImmediatePropagation()
     }
-    
+
     static nextProductListener() {
         $(document).on('click', '.nextProduct', Product.nextProduct);
     }
-    
+
     vote() {
         $('#upVoteCount').text(this.cached_votes_up)
         $('#downVoteCount').text(this.cached_votes_down)
     }
-    
-    
+
+
     static sendVote(event) {
         $.ajax({
             type: this.dataset.method,
             url: this.pathname,
             data: "json",
             success: function(json) {
-                product = new Product(json)
+                var product = new Product(json)
                 product.vote()
             }
         })
-    
+
         event.preventDefault()
         event.stopImmediatePropagation()
     }
-    
-    
+
+
     static voteListener() {
         $('body').on('click', '#upVote', Product.sendVote)
         $('body').on('click', '#downVote', Product.sendVote)
     }
-    
-    
+
+
     static differentProduct(event) {
         var nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
         $.get(`/products/${nextId}.json`).done(function(json) {
             var product = new Product(json)
             var productHtml = product.renderPage()
             $('#newContent').html(productHtml)
-            $('h1.display-4').text(json.name)
-            $('#differentProduct').attr("data-product", json["id"])
+            $('h1.display-4').text(product.name)
+            $('#differentProduct').attr("data-product", product.id)
         })
         event.preventDefault()
     }
-    
-    
+
+
     static differentProductListener() {
         $('body').on('click', '#differentProduct', Product.differentProduct)
     }
-    
-    
+
+
     static seeReviews(event) {
         if ($('#reviewsList').children().is('li')) {
             $('#reviewsList').remove()
         } else {
             var id = $('#differentProduct').attr('data-product')
-    
+
             $.get(`/products/${id}.json`, function(json) {
                 var product = new Product(json)
                 var reviewsHtml = product.renderList()
@@ -112,7 +112,7 @@ class Product {
         }
         event.preventDefault()
     }
-    
+
     static seeReviewsListener() {
         $('body').on('click', '#seeReviews', Product.seeReviews)
     }
@@ -120,7 +120,7 @@ class Product {
 
 
 
-$(function () {
+$(function() {
     Product.reviewsTemplate = HandlebarsTemplates['reviews_list']
     Product.template = HandlebarsTemplates['product_page']
     Product.filterFormListener()
