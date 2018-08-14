@@ -114,7 +114,9 @@ class Review {
 
     static ready() {
         Review.templateSource = $("#card-review").html()
-        Review.template = Handlebars.compile(Review.templateSource)
+        if (Review.templateSource !== undefined) {
+            Review.template = Handlebars.compile(Review.templateSource)  
+        }
         
         this.reviewFormListener()
         this.deleteReviewListener()

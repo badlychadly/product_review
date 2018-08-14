@@ -1,4 +1,3 @@
-
 class User {
     constructor(attributes) {
         this.id = attributes.id
@@ -11,34 +10,34 @@ class User {
     createReviews(reviews) {
         return this.reviews = reviews.map(review => new Review(review))
     }
+    
 
     renderList() {
         return User.template(this)
     }
 
-    
+
     static createUser(json) {
         var user = new User(json)
         user.createReviews(user.reviews)
         return user
     }
-    
-    
+
+
     static loadReviews(event) {
         if ($('#reviewsList').children().is('li')) {
             $('#reviewsList').remove()
         } else {
-            $.get(this.href + '.json', function (json) {
+            $.get(this.href + '.json', function(json) {
                 var user = User.createUser(json)
-                debugger;
-                // reviewsHtml = HandlebarsTemplates['reviews_list'];
                 var reviewsList = user.renderList()
-                // $('#insert_reviews').append(reviewsList)
+                $('#insert_reviews').append(reviewsList)
             })
         }
         event.preventDefault()
     }
-    
+
+
     static loadReviewsListener() {
         $(document).on('click', '.load_reviews', User.loadReviews)
     }
@@ -47,9 +46,7 @@ class User {
 
 
 
-$(function () {
-    // var ast = Handlebars.parse('reviews_list')
-    // Handlebars.precompile(ast)
+$(function() {
     User.template = HandlebarsTemplates['reviews_list']
     User.loadReviewsListener()
 })
