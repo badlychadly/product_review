@@ -12,9 +12,9 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build(review_params)
     respond_to do |format|
       if @review.save
-        format.html {render json: @review, status: 201} 
+        format.json {render json: @review, status: 201} 
       else
-        format.js {render :index, layout: false, status: :unprocessable_entity}
+        format.html {render :index, layout: false, status: :unprocessable_entity}
         
       end
     end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update_attributes(review_params) 
-        format.html {render json: @review}
+        format.json {render json: @review, status: 202}
       else 
         format.js {render :index, layout: false, status: :unprocessable_entity} 
       end
