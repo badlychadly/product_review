@@ -30,3 +30,9 @@
 # //////////////////////////////////////////////////////
 
 # figure out why the update form for review tries to go to the original product.id instead of the current one
+
+# Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Class, constructor functions) *
+
+#Use Fetch request to get users reviews.
+# DRY
+# see how to use the template methods that do the same thing on other objects

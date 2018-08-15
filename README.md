@@ -3,17 +3,26 @@
 product_review is a rails web app designed to give a user the opportunity to voice their opinion, or experience with a particular product they have had experience with. A user can Review an existing product or add a new one to the site.
 A user can also cast a vote on a particular product they liked or disliked. Users are not able to view other users since the focus of this web app is to review products. Users have the ability to submit, edit, and delete their reviews, but only the user who added the product can edit it. The only user who has the ability to delete a product is the top reviewer.
 
+## Prereqs
+
+This app uses the gems 'omniauth' and 'omniauth-amazon' for third party validation. Be sure to read up on the [omniauth-amazon readme](https://github.com/wingrunr21/omniauth-amazon) to understand the prerequisites of getting client_id and client_secret.
+
+
 ## Installation
 
 If you wish to add to This web app or, run it from your local server be sure to fork and clone this repository.
+
+
 This app was built with: 
 ```
 Ruby 2.3.6
-
+JavaScript
 ```
-and depends on the Framework of 
+and depends on the Frameworks of 
 ```
 Rails 5.2.0
+jQuery 3.3.1
+Bootstrap 4.0
 ```
 Once you have cloned this repo. Be sure to run the following in order
 ```
@@ -22,7 +31,7 @@ bundle install
 ```
 rake db:migrate
 ```
-There is also a seed.rb file in the db folder if you wish to plant that data run 
+There is also a seed.rb file in the db folder, if you wish to plant that data run 
 ```
 rake db:seed
 ```
