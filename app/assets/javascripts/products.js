@@ -7,6 +7,7 @@ class Product {
         this.img = attributes.img
         this.price = attributes.price
         this.reviews = attributes.reviews
+        this.users = attributes.users
         this.cached_votes_up = attributes.cached_votes_up
         this.cached_votes_down = attributes.cached_votes_down
     }
@@ -19,6 +20,11 @@ class Product {
 
     renderPage() {
         return Product.template(this)
+    }
+
+
+    renderUsers() {
+        return Product.usersTemplate(this)
     }
 
 
@@ -97,16 +103,20 @@ class Product {
         $('body').on('click', '#differentProduct', Product.differentProduct)
     }
 
+    static getProduct() {
+            var id = $('#differentProduct').attr('data-product')
+            return $.get(`/products/${id}.json`)
+    }
+
 
     static seeReviews(event) {
         if ($('#reviewsList').children().is('li')) {
             $('#reviewsList').remove()
         } else {
-            var id = $('#differentProduct').attr('data-product')
-
-            $.get(`/products/${id}.json`, function(json) {
+            Product.getProduct().done(function (json) {
                 var product = new Product(json)
                 var reviewsHtml = product.renderList()
+                $('#usersList').remove()
                 $('#newContent').prepend(reviewsHtml)
             })
         }
@@ -116,16 +126,37 @@ class Product {
     static seeReviewsListener() {
         $('body').on('click', '#seeReviews', Product.seeReviews)
     }
+
+    static seeUsers(event) {
+        if ($('#usersList').children().is('li')) {
+            $('#usersList').remove()
+        } else {
+            Product.getProduct().done(function (json) {
+                var product = new Product(json)
+                var usersHtml = product.renderUsers()
+                $('#reviewsList').remove()
+                $('#newContent').prepend(usersHtml)
+            })
+        }
+        event.preventDefault()
+    }
+
+    
+    static seeUsersListener() {
+        $(document).on('click', '#seeUsers', Product.seeUsers)
+    }
 }
 
 
 
 $(function() {
     Product.reviewsTemplate = HandlebarsTemplates['reviews_list']
+    Product.usersTemplate = HandlebarsTemplates['users_list']
     Product.template = HandlebarsTemplates['product_page']
     Product.filterFormListener()
     Product.nextProductListener()
     Product.voteListener()
     Product.differentProductListener()
     Product.seeReviewsListener()
+    Product.seeUsersListener()
 })

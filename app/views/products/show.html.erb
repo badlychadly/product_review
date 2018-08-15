@@ -8,7 +8,11 @@
 
 <%= link_to "Different Product", product_path(@product), class: "float-right", id: "differentProduct", data: {product: @product.id}  %>
 
-<%= link_to "See Reviews", product_reviews_path(@product), class: "btn btn-primary", id: "seeReviews" %>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "See Reviews", product_reviews_path(@product), class: "btn btn-sm btn-primary", id: "seeReviews" %>
+    <%= link_to "Reviewers", product_reviews_path(@product), class: "btn btn-sm btn-primary", id: "seeUsers" %> 
+</div>
+
 
 <div id="newContent" class="d-flex justify-content-center card-columns">
     <img src="<%= @product.img %>" alt="Product img" width="300" height="300">

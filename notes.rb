@@ -36,3 +36,4 @@
 #Use Fetch request to get users reviews.
 # DRY
 # see how to use the template methods that do the same thing on other objects
+# DRY products.js seeReviews() and seeUsers()
