@@ -18,7 +18,7 @@ class User {
 
 
     static createUser(json) {
-        var user = new User(json)
+        let user = new User(json)
         user.createReviews(user.reviews)
         return user
     }
@@ -29,8 +29,8 @@ class User {
             $('#reviewsList').remove()
         } else {
             $.get(this.href + '.json', function(json) {
-                var user = User.createUser(json)
-                var reviewsList = user.renderList()
+                let user = User.createUser(json)
+                let reviewsList = user.renderList()
                 $('#insert_reviews').append(reviewsList)
             })
         }

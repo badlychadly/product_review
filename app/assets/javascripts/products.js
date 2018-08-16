@@ -45,9 +45,9 @@ class Product {
 
 
     static nextProduct(event) {
-        var id = parseInt($(this).attr("data-product-id")) + 1
+        let id = parseInt($(this).attr("data-product-id")) + 1
         $.get(`/products/${id}/reviews`, function(data) {
-            var html = $.parseHTML(data)
+            let html = $.parseHTML(data)
             $('#pageContainer').html($(html).filter('#pageContainer'))
         })
         event.preventDefault()
@@ -70,7 +70,7 @@ class Product {
             url: this.pathname,
             data: "json",
             success: function(json) {
-                var product = new Product(json)
+                let product = new Product(json)
                 product.vote()
             }
         })
@@ -87,10 +87,10 @@ class Product {
 
 
     static differentProduct(event) {
-        var nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
+        let nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
         $.get(`/products/${nextId}.json`).done(function(json) {
-            var product = new Product(json)
-            var productHtml = product.renderPage()
+            let product = new Product(json)
+            let productHtml = product.renderPage()
             $('#newContent').html(productHtml)
             $('h1.display-4').text(product.name)
             $('#differentProduct').attr("data-product", product.id)
@@ -104,7 +104,7 @@ class Product {
     }
 
     static getProduct() {
-            var id = $('#differentProduct').attr('data-product')
+            let id = $('#differentProduct').attr('data-product')
             return $.get(`/products/${id}.json`)
     }
 
@@ -114,8 +114,8 @@ class Product {
             $('#reviewsList').remove()
         } else {
             Product.getProduct().done(function (json) {
-                var product = new Product(json)
-                var reviewsHtml = product.renderList()
+                let product = new Product(json)
+                let reviewsHtml = product.renderList()
                 $('#usersList').remove()
                 $('#newContent').prepend(reviewsHtml)
             })
@@ -132,8 +132,8 @@ class Product {
             $('#usersList').remove()
         } else {
             Product.getProduct().done(function (json) {
-                var product = new Product(json)
-                var usersHtml = product.renderUsers()
+                let product = new Product(json)
+                let usersHtml = product.renderUsers()
                 $('#reviewsList').remove()
                 $('#newContent').prepend(usersHtml)
             })

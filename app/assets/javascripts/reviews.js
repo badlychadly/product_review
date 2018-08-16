@@ -26,7 +26,7 @@ class Review {
 
 
     static invalid(resp) {
-        var $form = $($.parseHTML(resp.responseText)).filter('form')
+        let $form = $($.parseHTML(resp.responseText)).filter('form')
         $form.is('#new_review') ? $('#new_review').replaceWith($form) : $('.edit_review').replaceWith($form)
         redBorder()
         $('#review_content').val("")
@@ -34,8 +34,8 @@ class Review {
 
 
     static valid(json) {
-        var review = new Review(json)
-        var card = review.renderCard()
+        let review = new Review(json)
+        let card = review.renderCard()
         $('.edit_review').remove()
         $('#new_review').show()
         $('#reviews').append(card)
@@ -65,7 +65,7 @@ class Review {
 
 
     static destroy(json) {
-        var review = new Review(json)
+        let review = new Review(json)
         review.destroy()
         normalizeBorder()
     }
@@ -94,11 +94,11 @@ class Review {
 
 
     static getEditForm(event) {
-        var $card = $('.editReviewLink.card-link').not('.d-none').parents(".reviewCard")
+        let $card = $('.editReviewLink.card-link').not('.d-none').parents(".reviewCard")
         $.get(this.href).done(function(data) {
             $('#new_review').hide()
-            var $editForm = $(data).filter('form')
-            var reviewId = $editForm.attr('data-review-id')
+            let $editForm = $(data).filter('form')
+            let reviewId = $editForm.attr('data-review-id')
             $card.replaceWith($editForm)
         })
         event.preventDefault()
