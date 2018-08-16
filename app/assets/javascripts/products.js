@@ -13,19 +13,22 @@ class Product {
     }
 
 
-    renderList() {
-        return Product.reviewsTemplate(this)
+    renderList(template) {
+        $('#usersList').remove()
+        $('#reviewsList').remove()
+        $('#newContent').prepend(template(this))
     }
 
 
     renderPage() {
-        return Product.template(this)
+        // return Product.template(this)
+        $('#newContent').html(Product.bodyTemplate(this))
+        $('h1.display-4').text(this.name)
+        $('#differentProduct').attr("data-product", this.id)
     }
 
 
-    renderUsers() {
-        return Product.usersTemplate(this)
-    }
+
 
 
     static filterForm(event) {
@@ -51,7 +54,6 @@ class Product {
             $('#pageContainer').html($(html).filter('#pageContainer'))
         })
         event.preventDefault()
-        event.stopImmediatePropagation()
     }
 
     static nextProductListener() {
@@ -74,7 +76,6 @@ class Product {
                 product.vote()
             }
         })
-
         event.preventDefault()
         event.stopImmediatePropagation()
     }
@@ -91,9 +92,6 @@ class Product {
         $.get(`/products/${nextId}.json`).done(function(json) {
             let product = new Product(json)
             let productHtml = product.renderPage()
-            $('#newContent').html(productHtml)
-            $('h1.display-4').text(product.name)
-            $('#differentProduct').attr("data-product", product.id)
         })
         event.preventDefault()
     }
@@ -115,9 +113,7 @@ class Product {
         } else {
             Product.getProduct().done(function (json) {
                 let product = new Product(json)
-                let reviewsHtml = product.renderList()
-                $('#usersList').remove()
-                $('#newContent').prepend(reviewsHtml)
+                product.renderList(Product.reviewsTemplate)
             })
         }
         event.preventDefault()
@@ -133,9 +129,7 @@ class Product {
         } else {
             Product.getProduct().done(function (json) {
                 let product = new Product(json)
-                let usersHtml = product.renderUsers()
-                $('#reviewsList').remove()
-                $('#newContent').prepend(usersHtml)
+                let usersHtml = product.renderList(Product.usersTemplate)
             })
         }
         event.preventDefault()
@@ -152,7 +146,7 @@ class Product {
 $(function() {
     Product.reviewsTemplate = HandlebarsTemplates['reviews_list']
     Product.usersTemplate = HandlebarsTemplates['users_list']
-    Product.template = HandlebarsTemplates['product_page']
+    Product.bodyTemplate = HandlebarsTemplates['product_page']
     Product.filterFormListener()
     Product.nextProductListener()
     Product.voteListener()
