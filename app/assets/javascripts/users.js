@@ -12,9 +12,7 @@ class User {
     }
     
 
-    renderList() {
-        return User.template(this)
-    }
+    renderList() { return User.template(this) }
 
 
     static createUser(json) {
@@ -38,9 +36,7 @@ class User {
     }
 
 
-    static loadReviewsListener() {
-        $(document).on('click', '.load_reviews', User.loadReviews)
-    }
+    static loadReviewsListener() { $(document).on('click', '.load_reviews', User.loadReviews) }
 
 }
 

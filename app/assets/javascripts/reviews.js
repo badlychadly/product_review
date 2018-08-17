@@ -8,14 +8,10 @@ class Review {
 
 
 
-    renderCard() {
-        return Review.template(this)
-    }
+    renderCard() { return Review.template(this) }
 
 
-    findCard() {
-        return $(`[data-id="${this.id}"]`)
-    }
+    findCard() { return $(`[data-id="${this.id}"]`) }
 
 
     destroy() {
@@ -49,7 +45,6 @@ class Review {
 
 
     static reviewFormSubmit(event) {
-       
         $.ajax({
                 type: this.method,
                 url: this.action,
@@ -59,12 +54,6 @@ class Review {
             .fail(Review.invalid)
         event.preventDefault()
     }
-
-
-    static reviewFormListener() {
-        $(document).on('submit', 'form#new_review.new_review', Review.reviewFormSubmit)
-    }
-
 
 
     static destroy(json) {
@@ -87,15 +76,6 @@ class Review {
     }
 
 
-    static deleteReviewListener() {
-        $(document).on('submit', '#deleteComment', Review.deleteReview)
-    }
-
-    static updateReviewListener() {
-        $(document).on('submit', '.edit_review', Review.reviewFormSubmit)
-    }
-
-
     static getEditForm(event) {
         let $card = $('.editReviewLink.card-link').not('.d-none').parents(".reviewCard")
         $.get(this.href).done(function(data) {
@@ -106,11 +86,19 @@ class Review {
         })
         event.preventDefault()
     }
+    
+    
+    
+    
+    
+    
+    static reviewFormListener() { $(document).on('submit', 'form#new_review.new_review', Review.reviewFormSubmit) }
+    
+    static deleteReviewListener() { $(document).on('submit', '#deleteComment', Review.deleteReview) }
 
+    static updateReviewListener() { $(document).on('submit', '.edit_review', Review.reviewFormSubmit) }
 
-    static editLinkListener() {
-        $(document).on('click', '.editReviewLink', Review.getEditForm)
-    }
+    static editLinkListener() { $(document).on('click', '.editReviewLink', Review.getEditForm) }
 
 
     static ready() {

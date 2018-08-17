@@ -36,4 +36,6 @@
 #Use Fetch request to get users reviews.
 # DRY
 # see how to use the template methods that do the same thing on other objects
-
+# Use Extends and super for shared methods
+# how to invoke function on declaration
+# add fail to differentProduct()

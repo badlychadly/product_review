@@ -41,9 +41,6 @@ class Product {
 
     }
 
-    static filterFormListener() {
-        $(document).on('submit', '#searchForm', Product.filterForm)
-    }
 
 
     static nextProduct(event) {
@@ -57,9 +54,7 @@ class Product {
         event.preventDefault()
     }
 
-    static nextProductListener() {
-        $(document).on('click', '.nextProduct', Product.nextProduct);
-    }
+
 
     vote() {
         $('#upVoteCount').text(this.cached_votes_up)
@@ -82,25 +77,17 @@ class Product {
     }
 
 
-    static voteListener() {
-        $('body').on('click', '#upVote', Product.sendVote)
-        $('body').on('click', '#downVote', Product.sendVote)
-    }
-
 
     static differentProduct(event) {
         let nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
-        $.get(`/products/${nextId}.json`).done(function(json) {
+        $.get(`/products/${nextId}.json`).done((json) => {
             let product = new Product(json)
-            let productHtml = product.renderPage()
+            product.renderPage()
         })
         event.preventDefault()
     }
 
 
-    static differentProductListener() {
-        $('body').on('click', '#differentProduct', Product.differentProduct)
-    }
 
     static getProduct() {
             let id = $('#differentProduct').attr('data-product')
@@ -120,9 +107,6 @@ class Product {
         event.preventDefault()
     }
 
-    static seeReviewsListener() {
-        $('body').on('click', '#seeReviews', Product.seeReviews)
-    }
 
     static seeUsers(event) {
         if ($('#usersList').children().is('li')) {
@@ -136,10 +120,23 @@ class Product {
         event.preventDefault()
     }
 
+
+    static filterFormListener() { $(document).on('submit', '#searchForm', Product.filterForm) }
+
+
+    static nextProductListener() { $(document).on('click', '.nextProduct', Product.nextProduct)}
     
-    static seeUsersListener() {
-        $(document).on('click', '#seeUsers', Product.seeUsers)
+
+    static voteListener() {
+        $('body').on('click', '#upVote', Product.sendVote)
+        $('body').on('click', '#downVote', Product.sendVote)
     }
+
+    static differentProductListener() { $('body').on('click', '#differentProduct', Product.differentProduct) }    
+    
+    static seeReviewsListener() { $('body').on('click', '#seeReviews', Product.seeReviews) }
+    
+    static seeUsersListener() { $(document).on('click', '#seeUsers', Product.seeUsers) }
 }
 
 
