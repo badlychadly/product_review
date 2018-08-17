@@ -39,3 +39,4 @@
 # Use Extends and super for shared methods
 # how to invoke function on declaration
 # add fail to differentProduct()
+# in User renderReviews() does a similar thing as renderList() in Product, but both need custom actions

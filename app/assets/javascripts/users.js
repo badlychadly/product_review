@@ -12,7 +12,7 @@ class User {
     }
     
 
-    renderList() { return User.template(this) }
+    renderReviews() { $('#insert_reviews').append(User.template(this)) }
 
 
     static createUser(json) {
@@ -28,8 +28,7 @@ class User {
         } else {
             $.get(this.href + '.json', function(json) {
                 let user = User.createUser(json)
-                let reviewsList = user.renderList()
-                $('#insert_reviews').append(reviewsList)
+                user.renderReviews()
             })
         }
         event.preventDefault()
