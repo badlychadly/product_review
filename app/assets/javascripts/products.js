@@ -21,7 +21,6 @@ class Product {
 
 
     renderPage() {
-        // return Product.template(this)
         $('#newContent').html(Product.bodyTemplate(this))
         $('h1.display-4').text(this.name)
         $('#differentProduct').attr("data-product", this.id)

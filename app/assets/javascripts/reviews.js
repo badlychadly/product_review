@@ -36,9 +36,12 @@ class Review {
     static valid(json) {
         let review = new Review(json)
         let card = review.renderCard()
-        $('.edit_review').remove()
+        if ($('.edit_review').length) {
+            $('.edit_review').replaceWith(card) 
+        } else {
+            $('#reviews').append(card)
+        }
         $('#new_review').show()
-        $('#reviews').append(card)
         $('.productPageLink').remove()
         $('#review_content').val("").attr("disabled", true)
         normalizeBorder()
