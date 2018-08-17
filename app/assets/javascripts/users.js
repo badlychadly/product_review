@@ -19,7 +19,7 @@ class User {
 
     static createUser(json) {
         let user = new User(json)
-        user.createReviews(user.reviews)
+        user.createReviews(json.reviews)
         return user
     }
 
