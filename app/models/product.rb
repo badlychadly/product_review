@@ -16,5 +16,9 @@ class Product < ApplicationRecord
     reviews.pluck(:content)
   end
 
+  def self.find_previous(params)
+    self.find_by(id: (params[:product_id]).to_i - 1)
+  end
+
 end
 

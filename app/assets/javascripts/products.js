@@ -50,8 +50,10 @@ class Product {
     static nextProduct(event) {
         let id = parseInt($(this).attr("data-product-id")) + 1
         $.get(`/products/${id}/reviews`, function(data) {
-            let html = $.parseHTML(data)
-            $('#pageContainer').html($(html).filter('#pageContainer'))
+            let responseHtml = $.parseHTML(data)
+            $('#pageContainer').html($(responseHtml).filter('#pageContainer'))
+        }).fail(function () {
+            $('#divForLink').html("<p> No other products!</p>").css("color", "red")
         })
         event.preventDefault()
     }
