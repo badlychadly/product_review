@@ -21,15 +21,30 @@ class User {
         return user
     }
 
+    static fetchSuccess(json) {
+        let user = User.createUser(json)
+        user.renderReviews()
+    }
+
+
+    static fetchReviews() {
+        fetch(this.href + '.json')
+            .then(function (resp) {
+                return resp.json()
+            })
+            .then(User.fetchSuccess)
+    }
+
 
     static loadReviews(event) {
         if ($('#reviewsList').children().is('li')) {
             $('#reviewsList').remove()
         } else {
-            $.get(this.href + '.json', function(json) {
-                let user = User.createUser(json)
-                user.renderReviews()
-            })
+            User.fetchReviews()
+            // $.get(this.href + '.json', function(json) {
+            //     let user = User.createUser(json)
+            //     user.renderReviews()
+            // })
         }
         event.preventDefault()
     }
