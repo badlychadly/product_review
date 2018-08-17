@@ -5,8 +5,9 @@
 
 
   <%= page_header(@product.name) %>
-
-<%= link_to "Different Product", product_path(@product), class: "float-right", id: "differentProduct", data: {product: @product.id}  %>
+<div class="float-right" id="divForError"> 
+<%= link_to "Different Product", product_path(@product), id: "differentProduct", data: {product: @product.id}  %>
+</div>
 
 <div class="btn-group" role="group" aria-label="Basic example">
     <%= link_to "See Reviews", product_reviews_path(@product), class: "btn btn-sm btn-primary", id: "seeReviews" %>

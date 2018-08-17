@@ -28,8 +28,6 @@ class Product {
 
 
 
-
-
     static filterForm(event) {
         $.ajax({
             type: this.method,
@@ -83,6 +81,8 @@ class Product {
         $.get(`/products/${nextId}.json`).done((json) => {
             let product = new Product(json)
             product.renderPage()
+        }).fail(function () {
+            $('#divForError').html("Thats all!").css("color", "red")
         })
         event.preventDefault()
     }
