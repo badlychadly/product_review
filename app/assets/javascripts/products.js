@@ -75,15 +75,25 @@ class Product {
     }
 
 
+    static noProductNotice() {
+        $('#differentProduct').hide()
+        $('#divForError').append("Thats all!").css("color", "red")
+    }
+
+
+    static productContent(resp) {
+        let json = (resp.id) ? resp : resp.responseJSON
+        let product = new Product(json)
+        product.renderPage()
+    }
+
+
 
     static differentProduct(event) {
         let nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
-        $.get(`/products/${nextId}.json`).done((json) => {
-            let product = new Product(json)
-            product.renderPage()
-        }).fail(function () {
-            $('#divForError').html("Thats all!").css("color", "red")
-        })
+        $.get(`/products/${nextId}.json`)
+        .fail(Product.noProductNotice)
+        .always(Product.productContent)
         event.preventDefault()
     }
 
