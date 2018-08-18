@@ -13,10 +13,9 @@ class ProductsController < ApplicationController
 
   def show  
     respond_to do |format|
-      # binding.pry
       if !@product
-        @product = Product.find_previous(params)
-        format.json {render json: @product, layout: false, status: :unprocessable_entity}
+        @product = Product.find_previous(params[:id])
+        format.json {render json: @product, layout: false, status: 404}
       else
         format.html {render 'show'}
         format.json {render json: @product, status: 200}

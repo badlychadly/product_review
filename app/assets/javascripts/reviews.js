@@ -89,28 +89,22 @@ class Review {
     
     
     
+    static listeners() {
+        this.reviewFormListener = function() { $(document).on('submit', 'form#new_review.new_review', Review.reviewFormSubmit) }();
+        this.deleteReviewListener = function() { $(document).on('submit', '#deleteComment', Review.deleteReview) }();
+        this.updateReviewListener = function() { $(document).on('submit', '.edit_review', Review.reviewFormSubmit) }();
+        this.editLinkListener = function() { $(document).on('click', '.editReviewLink', Review.getEditForm) }();
+    }
     
     
-    
-    static reviewFormListener() { $(document).on('submit', 'form#new_review.new_review', Review.reviewFormSubmit) }
-    
-    static deleteReviewListener() { $(document).on('submit', '#deleteComment', Review.deleteReview) }
-
-    static updateReviewListener() { $(document).on('submit', '.edit_review', Review.reviewFormSubmit) }
-
-    static editLinkListener() { $(document).on('click', '.editReviewLink', Review.getEditForm) }
 
 
     static ready() {
         Review.templateSource = $("#card-review").html()
         if (Review.templateSource !== undefined) {
             Review.template = Handlebars.compile(Review.templateSource)
-        }
-
-        this.reviewFormListener()
-        this.deleteReviewListener()
-        this.editLinkListener()
-        this.updateReviewListener()
+        };
+        Review.listeners()
     }
 
 }

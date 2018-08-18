@@ -6,8 +6,8 @@ class ReviewsController < ApplicationController
   def index
     @review = Review.new
     if !@product
-      @product = Product.find_previous(params)
-      render :index, layout: false, status: :unprocessable_entity
+      @product = Product.find_previous(params[:product_id])
+      render :index, layout: false, status: 404
     end
   end
 

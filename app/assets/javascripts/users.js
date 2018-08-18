@@ -37,14 +37,10 @@ class User {
 
 
     static loadReviews(event) {
-        if ($('#reviewsList').children().is('li')) {
+        if ($('#reviewsList').children().is('h4')) {
             $('#reviewsList').remove()
         } else {
             User.fetchReviews()
-            // $.get(this.href + '.json', function(json) {
-            //     let user = User.createUser(json)
-            //     user.renderReviews()
-            // })
         }
         event.preventDefault()
     }

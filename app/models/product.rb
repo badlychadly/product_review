@@ -17,7 +17,7 @@ class Product < ApplicationRecord
   end
 
   def self.find_previous(params)
-    self.find_by(id: (params[:product_id]).to_i - 1)
+    self.find_by(id: (params).to_i - 1)
   end
 
 end

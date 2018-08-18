@@ -33,8 +33,6 @@
 
 # Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Class, constructor functions) *
 
-#Use Fetch request to get users reviews.
 # DRY
 # see how to use the template methods that do the same thing on other objects
-# add fail to differentProduct()
 # in User renderReviews() does a similar thing as renderList() in Product, but both need custom actions

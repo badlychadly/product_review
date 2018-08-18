@@ -131,22 +131,19 @@ class Product {
     }
 
 
-    static filterFormListener() { $(document).on('submit', '#searchForm', Product.filterForm) }
-
-
-    static nextProductListener() { $(document).on('click', '.nextProduct', Product.nextProduct)}
+    static listeners() {
+        this.filterFormListener = function() { $(document).on('submit', '#searchForm', Product.filterForm) }()
+        this.nextProductListener = function() { $(document).on('click', '.nextProduct', Product.nextProduct)}()
+        this.voteListener = function() {
+            $('body').on('click', '#upVote', Product.sendVote)
+            $('body').on('click', '#downVote', Product.sendVote)
+        }()
     
-
-    static voteListener() {
-        $('body').on('click', '#upVote', Product.sendVote)
-        $('body').on('click', '#downVote', Product.sendVote)
-    }
-
-    static differentProductListener() { $('body').on('click', '#differentProduct', Product.differentProduct) }    
-    
-    static seeReviewsListener() { $('body').on('click', '#seeReviews', Product.seeReviews) }
-    
-    static seeUsersListener() { $(document).on('click', '#seeUsers', Product.seeUsers) }
+        this.differentProductListener = function() { $('body').on('click', '#differentProduct', Product.differentProduct) }()    
+        this.seeReviewsListener = function() { $('body').on('click', '#seeReviews', Product.seeReviews) }()
+        this.seeUsersListener = function() { $(document).on('click', '#seeUsers', Product.seeUsers) }()
+        
+    }   
 }
 
 
@@ -155,10 +152,5 @@ $(function() {
     Product.reviewsTemplate = HandlebarsTemplates['reviews_list']
     Product.usersTemplate = HandlebarsTemplates['users_list']
     Product.bodyTemplate = HandlebarsTemplates['product_page']
-    Product.filterFormListener()
-    Product.nextProductListener()
-    Product.voteListener()
-    Product.differentProductListener()
-    Product.seeReviewsListener()
-    Product.seeUsersListener()
+    Product.listeners()
 })
