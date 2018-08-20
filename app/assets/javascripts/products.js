@@ -106,8 +106,6 @@ class Product {
             }
         })
         
-
-
         // $.get(`/products/${nextId}.json`)
         // .fail(Product.noProductNotice)
         // .always(Product.productContent)
@@ -141,7 +139,7 @@ class Product {
         } else {
             Product.getProduct().done(function (json) {
                 let product = new Product(json)
-                let usersHtml = product.renderList(Product.usersTemplate)
+                product.renderList(Product.usersTemplate)
             })
         }
         event.preventDefault()
