@@ -87,13 +87,30 @@ class Product {
         product.renderPage()
     }
 
+    
+    static handleFailure(resp) {
+        Product.noProductNotice()
+        Product.productContent(resp)
+    }
+
 
 
     static differentProduct(event) {
         let nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
-        $.get(`/products/${nextId}.json`)
-        .fail(Product.noProductNotice)
-        .always(Product.productContent)
+        fetch(`/products/${nextId}.json`)
+        .then(function (resp) {
+            if (!resp.ok) {
+                resp.json().then(Product.handleFailure)  
+            } else {
+                resp.json().then(Product.productContent)
+            }
+        })
+        
+
+
+        // $.get(`/products/${nextId}.json`)
+        // .fail(Product.noProductNotice)
+        // .always(Product.productContent)
         event.preventDefault()
     }
 
