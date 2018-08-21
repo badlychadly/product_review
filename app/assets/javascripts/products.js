@@ -98,13 +98,11 @@ class Product {
     static differentProduct(event) {
         let nextId = parseInt($('#differentProduct').attr('data-product')) + 1;
         fetch(`/products/${nextId}.json`)
-        .then(function (resp) {
-            if (!resp.ok) {
-                resp.json().then(Product.handleFailure)  
-            } else {
-                resp.json().then(Product.productContent)
-            }
-        })
+        .then(resp => {
+            resp.json().then(Product.productContent)
+            if (!resp.ok) { throw resp } 
+        })         
+        .catch(Product.noProductNotice)
         
         // $.get(`/products/${nextId}.json`)
         // .fail(Product.noProductNotice)
