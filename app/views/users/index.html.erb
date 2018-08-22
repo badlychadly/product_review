@@ -6,6 +6,7 @@
 
   
   <%= page_header("User Rankings", sub_header: "See where you are ranked") %>
+  <%= link_to "Reverse order", users_path, id: "reverse" %>
 
   <ol>
     <% @users.each do |name, reviews| %> 

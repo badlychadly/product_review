@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def index 
     @users = User.order_with_counted_reviews
+    respond_to do |format|
+      format.html 
+      format.json {render json: @users, status: 200}
+    end
   end
 
 

@@ -46,6 +46,34 @@ class User {
     }
 
 
+    static changeLiText(array) {
+        let reversedArray = array.reverse()
+                reversedArray.forEach(function (info, index) {
+                    for (const key in info) {
+                        $('ol div').children('li').eq(index).text(`${key}, Number of Reviews - ${info[key]}`)
+                    }
+                })
+    }
+
+
+    static reverseOrder(event) {
+        let sortedArray = []
+        $.get(this.href + '.json')
+        .done(function (json) {
+            for (let key in json) {
+                let val = json[key]
+                    let obj = {};
+                    obj[key] = val
+                    sortedArray.push(obj)
+                }
+                User.changeLiText(sortedArray)
+        })
+        event.preventDefault()
+    }
+
+    static reverseOrderListener() { $(document).on('click', '#reverse', User.reverseOrder)}
+
+
     static loadReviewsListener() { $(document).on('click', '.load_reviews', User.loadReviews) }
 
 }
@@ -55,4 +83,5 @@ class User {
 $(function() {
     User.template = HandlebarsTemplates['reviews_list']
     User.loadReviewsListener()
+    User.reverseOrderListener()
 })
